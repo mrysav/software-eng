@@ -73,7 +73,7 @@ public class Database {
             }
             
         
-        return "home";
+        return "input";
       
       
       
@@ -109,8 +109,8 @@ public class Database {
   public String checkUser(LoginBean User) throws SQLException{
       
       
-      String url = "jdbc:derby://localhost:1527/quizDB"; 
-      Connection conn = DriverManager.getConnection(url,"caleb","code42"); 
+      String url = "jdbc:derby://localhost:1527/databaseDB"; 
+      Connection conn = DriverManager.getConnection(url,"app","team2phonedb"); 
             final String queryCheck = "SELECT * FROM users WHERE \"name\" = '" + User.getUsername() + "'"
                     + " AND \"password\" ='" + User.getPassword() +"'";
             final Statement ps = conn.createStatement();
@@ -118,7 +118,7 @@ public class Database {
             final ResultSet resultSet = ps.executeQuery(queryCheck);
             if(resultSet.next()) {
                 currentUser = User.getUsername();
-                return "home";
+                return "input";
 }
       
        FacesContext facesContext = FacesContext.getCurrentInstance();

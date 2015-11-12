@@ -13,9 +13,10 @@
    </h:head>
    <h:body>
        
-          <h1 style="color:#00cccc; text-shadow: 2px 2px black">#{msgs.regtitle}</h1>
+          <h1 style="color:#00cccc; text-align: center;text-shadow: 2px 2px black">#{msgs.regtitle}</h1>
          
           <h:form id="loginForm"> 
+              <div style="text-align: center">
              <p> &nbsp;&nbsp;&nbsp;&nbsp;#{msgs.username}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                  <h:inputText id="regname" required="true" requiredMessage="Required Field" 
                     value="#{registerBean.username}" style="color:black; background-color:yellow" /> 
@@ -36,13 +37,13 @@
              </p>
               
               <p> <h:commandButton action="#{database.registerUser(registerBean.getUser())}" style="color:black; background-color:yellow" value="#{msgs.register}"/></p> 
-            
+            </div>
           </h:form>
           
           <h:form>
-              
+              <div style="text-align: center">
           <p> <h:commandButton action="#{loginBean.back()}" style="color:black; background-color:#00ffff" value="#{msgs.back}"/></p> 
-             
+             </div>
       </h:form>
           
    </h:body>
