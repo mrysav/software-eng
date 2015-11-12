@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+  
+    
+    
+    <h:head>
+      <title>#{msgs.title}</title>
+     
+   </h:head>
+   <h:body>
+       
+          <h1 style="color:#00cccc; text-shadow: 2px 2px black">#{msgs.regtitle}</h1>
+         
+          <h:form id="loginForm"> 
+             <p> &nbsp;&nbsp;&nbsp;&nbsp;#{msgs.username}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 <h:inputText id="regname" required="true" requiredMessage="Required Field" 
+                    value="#{registerBean.username}" style="color:black; background-color:yellow" /> 
+            <h:message style="color:red" for="regname"/>
+             </p>
+              
+              
+             <p> #{msgs.enter}&nbsp;&nbsp; 
+                 <h:inputSecret id="regpass1" required="true" requiredMessage="Required Field"
+                     value="#{registerBean.password1}" style="color:black; background-color:yellow"/> 
+                 <h:message style="color:red" for="regpass1"/>
+             </p>
+              
+              
+              <p> #{msgs.renter} <h:inputSecret style="color:black; background-color:yellow"
+             id="regpass2" required="true" requiredMessage="Required Field" value="#{registerBean.password2}" />
+             <h:message style="color:red" for="regpass2"/>
+             </p>
+              
+              <p> <h:commandButton action="#{database.registerUser(registerBean.getUser())}" style="color:black; background-color:yellow" value="#{msgs.register}"/></p> 
+            
+          </h:form>
+          
+          <h:form>
+              
+          <p> <h:commandButton action="#{loginBean.back()}" style="color:black; background-color:#00ffff" value="#{msgs.back}"/></p> 
+             
+      </h:form>
+          
+   </h:body>
+</html>

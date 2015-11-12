@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+   <h:head>
+      <title>#{msgs.title}</title>
+   </h:head>
+   <h:body>
+      <h:form>
+          
+          <h1 style="color:#00cccc; text-shadow: 2px 2px black"> #{msgs.hello} #{database.name} #{msgs.title}</h1>
+          <h3> <u> #{msgs.heading} </u> </h3>
+         
+         <h:form >
+
+             <h:selectOneListbox id="selection" style="color:black; background-color:yellow" value="Select a quiz to take" valueChangeListener="#{quizBean.valueChanged}" 
+                                 required="true" requiredMessage="Selection is required." onchange="submit()">
+                
+   	    <f:selectItem itemValue="0" itemLabel="Mathematics"/>
+            <f:selectItem itemValue="1" itemLabel="Computer Science"/>
+            <f:selectItem itemValue="2" itemLabel="Physics"/>
+            <f:selectItem itemValue="3" itemLabel="Statistics"/>
+              
+        </h:selectOneListbox>  
+             <h:message style="color:red" for="selection"/>
+
+             <p> <h:commandButton action="#{quizBean.go()}" style="color:black; background-color:yellow" value="#{msgs.start}"/></p> 
+             
+         </h:form>
+         
+      </h:form>
+   </h:body>
+</html>

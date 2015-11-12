@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+   <h:head>
+      <title>#{msgs.title}</title>
+      
+   </h:head>
+   <h:body>
+       
+       
+      <h:form style="color:#{quizBean.color}" >
+         
+          <h1 style="color:#{quizBean.color}">  #{quizBean.title} Trivia Question </h1>
+     
+          <h3> #{database.name}'s current best scores: </h3>
+          
+          <h3> Mathematics | Computer Science | Physics | Statistics </h3>
+          <h3 style="color:black"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#{database.mathScore}/4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#{database.csScore}/4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 
+             &nbsp;&nbsp;&nbsp;&nbsp;#{database.physicsScore}/4 &nbsp;&nbsp;&nbsp;&nbsp;| 
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#{database.statsScore}/4  </h3>
+          
+          <h:panelGroup rendered="#{!quizBean.notFirst}">
+          <h3 style="color:#{quizBean.color}"> #{quizBean.last} </h3>
+          </h:panelGroup>
+          
+          <h:panelGroup rendered="#{!quizBean.done}">
+          <h3 style="color:#{quizBean.color}"> Here is the #{quizBean.prompt} question: </h3>
+           
+           <h2 style="color:#{quizBean.color}"> #{quizBean.question} </h2>
+            
+           <h:selectOneRadio id="input" layout="pageDirection" value="#{quizBean.input}"
+                              required="true" requiredMessage="Selection is required." >
+            <f:selectItem itemValue="0" itemLabel="#{quizBean.ans1}"/>
+            <f:selectItem itemValue="1" itemLabel="#{quizBean.ans2}"/>
+            <f:selectItem itemValue="2" itemLabel="#{quizBean.ans3}"/>
+            <f:selectItem itemValue="3" itemLabel="#{quizBean.ans4}"/>
+           </h:selectOneRadio>
+          <h:message style="color:red" for="input"/>
+           <h> </h>
+          </h:panelGroup>
+          
+          <h:panelGroup rendered="#{quizBean.done}">
+           <h2> Congrats you have finished the #{quizBean.title} Trivia Quiz! </h2>
+             </h:panelGroup>
+           
+            <h:panelGroup rendered="#{!quizBean.done}">
+           <p> <h:commandButton action="#{quizBean.check()}" style="color:black" value="#{msgs.next}"/></p>
+             </h:panelGroup>
+             
+             <h:panelGroup rendered="#{quizBean.done}">
+                 <p> <h:commandButton action="#{database.restart(quizBean.make())}" style="color:black" value="#{msgs.restart}"/></p>
+             </h:panelGroup>
+           
+      </h:form>
+   </h:body>
+</html>
