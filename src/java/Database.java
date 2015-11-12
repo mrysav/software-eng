@@ -1,5 +1,4 @@
 import com.corejsf.LoginBean;
-import com.corejsf.QuizBean;
 import com.corejsf.RegisterBean;
 import java.io.IOException;
 import java.sql.Connection;
