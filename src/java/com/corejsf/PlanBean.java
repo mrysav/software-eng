@@ -14,12 +14,15 @@ import javax.servlet.http.HttpServletRequest;
 @SessionScoped
 public class PlanBean implements Serializable {
     
-    
     public PlanBean(){ 
     } 
-    
     
     public String submit(){
         return "output.xhtml";
     }
+    
+    public String restart(){
+        return "input.xhtml";
+    }
+    
 }
