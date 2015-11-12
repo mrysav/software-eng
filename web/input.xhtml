@@ -12,5 +12,28 @@
           <h1 style="color:#00cccc;text-align: center; text-shadow: 2px 2px black"> #{msgs.hello} #{database.name} #{msgs.title}</h1>
           <h3 style="text-align: center"> <u> #{msgs.heading} </u> </h3>
          
+          <h:form>
+              <div style="text-align: center">
+             
+                  <p> #{msgs.mins}  <h:inputText id="mins" required="true" requiredMessage="Required Field" 
+                  style="color:black; background-color:yellow"/>  
+                 <h:message style="color:red" for="mins"/> 
+                  </p>
+                  
+              <p>   #{msgs.texts}  <h:inputText id="texts" required="true" requiredMessage="Required Field" 
+                  style="color:black; background-color:yellow"/>  
+                 <h:message style="color:red" for="texts"/> 
+             </p>
+                  
+             <p> #{msgs.gigs} <h:inputText id="gigs" required="true" requiredMessage="Required Field" 
+                  style="color:black; background-color:yellow"/>  
+                 <h:message style="color:red" for="gigs"/> 
+             </p>
+             
+                  <p> <h:commandButton action="#{planBean.submit()}" style="color:black; background-color:yellow" value="#{msgs.submit}"/></p> 
+              
+             </div>
+          </h:form>
+          
    </h:body>
 </html>
