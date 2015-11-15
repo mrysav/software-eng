@@ -3,7 +3,8 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
    <h:head>
       <title>#{msgs.title}</title>
    </h:head>
@@ -16,22 +17,24 @@
               <div style="text-align: center">
              
                   <p> #{msgs.mins}  <h:inputText id="mins" required="true" requiredMessage="Required Field" 
-                  style="color:black; background-color:yellow"/>  
+                  style="color:black; background-color:yellow" p:placeholder="Enter only a number"/>  
                  <h:message style="color:red" for="mins"/> 
                   </p>
                   
               <p>   #{msgs.texts}  <h:inputText id="texts" required="true" requiredMessage="Required Field" 
-                  style="color:black; background-color:yellow"/>  
+                  style="color:black; background-color:yellow" p:placeholder="Sum of sent+recieved"/>  
                  <h:message style="color:red" for="texts"/> 
              </p>
                   
              <p> #{msgs.gigs} <h:inputText id="gigs" required="true" requiredMessage="Required Field" 
-                  style="color:black; background-color:yellow"/>  
+                  style="color:black; background-color:yellow" p:placeholder="Can be found on phone"/>  
                  <h:message style="color:red" for="gigs"/> 
              </p>
              
                   <p> <h:commandButton action="#{planBean.submit()}" style="color:black; background-color:yellow" value="#{msgs.submit}"/></p> 
-              
+             <p>
+                     <p> <a href="help.xhtml" >#{msgs.help}</a></p>
+             </p>
              </div>
           </h:form>
           
