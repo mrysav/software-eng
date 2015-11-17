@@ -1,0 +1,8 @@
+Create table plan(
+"id" INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+"carrier name" VARCHAR(15) NOT NULL,
+"plan(monthly)" VARCHAR(15) NOT NULL,
+"calls" VARCHAR(15) NOT NULL,
+"messaging" VARCHAR(15) NOT NULL,
+"data" VARCHAR(15) NOT NULL
+);
