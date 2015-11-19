@@ -43,13 +43,51 @@ public class Database {
 
     public String registerUser(RegisterBean User) throws SQLException {
 
+        //boolean hasSpecialChars = false;
+        boolean hasNums = false;
+        boolean hasLetters = false;
+        
         //check if username and passwords are valid
         if (!User.getPassword1().equals(User.getPassword2())) {
             FacesContext facesContext = FacesContext.getCurrentInstance();
             facesContext.addMessage("loginForm", new FacesMessage("Passwords must match!"));
             return null;
         }
-
+        
+        // check if password is long enough
+        else if (User.getPassword1().length() < 8) {
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            facesContext.addMessage("loginForm", new FacesMessage("Passwords must be at least 8 characters long!"));
+            return null;
+        }
+        
+        else if (User.getPassword1().length() > 16) {
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            facesContext.addMessage("loginForm", new FacesMessage("Passwords must be less than 16 characters long!"));
+            return null;
+        }
+        
+        for (int i = 0; i< User.getPassword1().length(); i++){
+            if (Character.isDigit((User.getPassword1().charAt(i)))){
+                hasNums = true;
+            }
+            if ( Character.isLetter(User.getPassword1().charAt(i))){
+                hasLetters = true;
+            }
+        }
+        
+       if (! hasLetters){
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            facesContext.addMessage("loginForm", new FacesMessage("Passwords must contain at least one letter!"));
+            return null;
+        }
+        
+        if (! hasNums){
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            facesContext.addMessage("loginForm", new FacesMessage("Passwords must contain at least one number!"));
+            return null;
+        }
+        
         Connection conn = DriverManager.getConnection(databaseURL, "app", "team2phonedb");
         final String queryCheck = "SELECT * FROM users WHERE \"name\" = '" + User.getUsername() + "'";
         final Statement ps = conn.createStatement();
