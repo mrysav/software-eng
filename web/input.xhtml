@@ -16,18 +16,18 @@
           <h:form>
               <div style="text-align: center">
              
-                  <p> #{msgs.mins}  <h:inputText id="mins" required="true" requiredMessage="Required Field" 
+                  <p> #{msgs.mins}  <h:inputText id="mins" value="#{planBean.mins}" required="true" requiredMessage="Required Field" 
                   style="color:black; background-color:yellow" p:placeholder="Enter only a number"/>  
                  <h:message style="color:red" for="mins"/> 
                   </p>
                   
               <p>  &nbsp;&nbsp; #{msgs.texts} &nbsp;&nbsp; <h:inputText id="texts" required="true" requiredMessage="Required Field" 
-                  style="color:black; background-color:yellow" p:placeholder="Sum of sent+recieved"/>  
+                  value="#{planBean.texts}" style="color:black; background-color:yellow" p:placeholder="Sum of sent+recieved"/>  
                  <h:message style="color:red" for="texts"/> 
              </p>
                   
              <p> #{msgs.gigs} <h:inputText id="gigs" required="true" requiredMessage="Required Field" 
-                  style="color:black; background-color:yellow" p:placeholder="Can be found on phone"/>  
+                  value="#{planBean.gigs}" style="color:black; background-color:yellow" p:placeholder="Can be found on phone"/>  
                  <h:message style="color:red" for="gigs"/> 
              </p>
              

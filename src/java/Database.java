@@ -27,7 +27,6 @@ public class Database {
     private static final String databaseURL = "jdbc:derby://ukko.d.umn.edu:16020/databaseDB";
 
     @Resource(name = "jdbc/databaseDB")
-    private DataSource quizSource;
 
     private List<String> buildList(ResultSet resultSet, String columnName)
             throws SQLException {
