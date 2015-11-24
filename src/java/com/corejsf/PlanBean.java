@@ -22,15 +22,36 @@ public class PlanBean implements Serializable {
     private int mins;
     private int texts;
     private int gigs;
-    private String plan1;
-    private String plan2;
-    private String plan3;
-    private static final String databaseURL = "jdbc:derby://ukko.d.umn.edu:16020/databaseDB";
+    private String plan1Carrier;
+    private String plan1Name;
+    private String plan1Cost;
+   
+    private String plan2Carrier;
+    private String plan2Name;
+    private String plan2Cost;
+    
+     private String plan3Carrier;
+    private String plan3Name;
+    private String plan3Cost;
+    
+        private static final String databaseURL = "jdbc:derby://ukko.d.umn.edu:16020/databaseDB";
     
     public PlanBean(){ 
     } 
     
     public String submit() throws SQLException {
+        
+        plan1Carrier = null;
+        plan1Name = null;
+        plan1Cost = null;
+        
+        plan2Carrier = null;
+        plan2Name = null;
+        plan2Cost = null;
+        
+        plan3Carrier = null;
+        plan3Name = null;
+        plan3Cost = null;
         
          Connection conn = DriverManager.getConnection(databaseURL, "app", "team2phonedb");
         final String queryCheck = "SELECT * FROM plans WHERE "
@@ -46,24 +67,24 @@ public class PlanBean implements Serializable {
         while (i < 3 && rs.next()) {
            
             if (i ==0){
-            plan1 = rs.getString("carrier_name");
-            plan1 += "  " + rs.getString("plan_name");
-            plan1 += "   Cost: " + rs.getInt("monthy_price");
+            plan1Carrier =  rs.getString("carrier_name");
+            plan1Name =  rs.getString("plan_name");
+            plan1Cost = "" + rs.getInt("monthy_price");
             }
             
             else if (i == 1){
                 
-            plan2 = rs.getString("carrier_name");
-            plan2 += "  " + rs.getString("plan_name");
-            plan2 += "   Cost: " + rs.getInt("monthy_price");
+            plan2Carrier = rs.getString("carrier_name");
+            plan2Name = rs.getString("plan_name");
+            plan2Cost = "" +rs.getInt("monthy_price");
                 
             }
             
             else {
                 
-            plan3 = rs.getString("carrier_name");
-            plan3 += "  " + rs.getString("plan_name");
-            plan3 += "   Cost: " + rs.getInt("monthy_price");
+            plan3Carrier = rs.getString("carrier_name");
+            plan3Name =  rs.getString("plan_name");
+            plan3Cost =  "" + rs.getInt("monthy_price");
                 
             }
             rs = ps.getResultSet();
@@ -75,20 +96,47 @@ public class PlanBean implements Serializable {
         return "output.xhtml";
     }
     
-    
-    public String getPlan1(){
-        return plan1;
+  
+    public String getPlan1Carrier(){
+        return plan1Carrier;
     }
     
-    public String getPlan2(){
-        return plan2;
+    public String getPlan1Name(){
+        return plan1Name;
     }
     
-    public String getPlan3(){
-        return plan3;
+    public String getPlan1Cost(){
+        return plan1Cost;
     }
+    
+     public String getPlan2Carrier(){
+        return plan2Carrier;
+    }
+    
+    public String getPlan2Name(){
+        return plan2Name;
+    }
+    
+    public String getPlan2Cost(){
+        return plan2Cost;
+    }
+    
+     public String getPlan3Carrier(){
+        return plan3Carrier;
+    }
+    
+    public String getPlan3Name(){
+        return plan3Name;
+    }
+    
+    public String getPlan3Cost(){
+        return plan3Cost;
+    }
+    
+   
     
     public String restart(){
+       
         return "input.xhtml";
     }
     
