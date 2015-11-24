@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
-   <h:head>
-      <title>#{msgs.title}</title>
-   </h:head>
-   <h:body >
-       
-      <h:form>
-          
-         
-          <h1 style="color:#00cccc; text-align: center; text-shadow:2px 2px black">#{msgs.title}</h1>
-          <h3 style="text-align: center"> <u> #{msgs.prompt} </u> </h3>
-        
-          <div style="text-align: center">
-             <p> <h:commandButton action="#{loginBean.register()}" style="color:black; background-color:yellow" value="#{msgs.register}"/></p> 
-             </div>
-         </h:form>
-          
-          <h:form>
-              <div style="text-align: center">
-             <p> #{msgs.username} <h:inputText id="username" required="true" requiredMessage="Required Field" 
-                  style="color:black; background-color:yellow" value="#{loginBean.username}" p:placeholder="If registered" />  
-                 <h:message style="color:red" for="username"/> 
-             </p>
-              <p> &nbsp;#{msgs.password}&nbsp;&nbsp; <h:inputSecret id ="password" required="true" value="#{loginBean.password}" 
-                  requiredMessage="Required Field" style="color:black; background-color:yellow" p:placeholder="Must contain letter+num"/> 
-             <h:message style="color:red" for="password"/>
-             </p>
-             
-              <p> <h:commandButton action="#{database.checkUser(loginBean.make())}" style="color:black; background-color:yellow" value="#{msgs.login}"/></p> 
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>#{msgs.title}</title>
+    </h:head>
+    <h:body >
+        <b:navBar brand="PhoneDB" brandHref="#"></b:navBar>
+        <b:container>
+            <h1 class="text-center">#{msgs.title}</h1>
+            <h3 class="text-center"><u> #{msgs.prompt}</u></h3>
+            <br></br>
+            <h:form>
+                <div style="text-align: center">
+                    <p> <h:commandButton action="#{loginBean.register()}" style="color:black; background-color:yellow" value="#{msgs.register}"/></p> 
+                </div>
+            </h:form>
 
-              <p> <a href="help.xhtml" >#{msgs.help}</a></p>
-             </div>
-          </h:form>
+            <h:form>
+                <div style="text-align: center">
+                    <p> #{msgs.username} <h:inputText id="username" required="true" requiredMessage="Required Field" 
+                                                      style="color:black; background-color:yellow" value="#{loginBean.username}" p:placeholder="If registered" />  
+                        <h:message style="color:red" for="username"/> 
+                    </p>
+                    <p> &nbsp;#{msgs.password}&nbsp;&nbsp; <h:inputSecret id ="password" required="true" value="#{loginBean.password}" 
+                                                                          requiredMessage="Required Field" style="color:black; background-color:yellow" p:placeholder="Must contain letter+num"/> 
+                        <h:message style="color:red" for="password"/>
+                    </p>
 
-        
-   </h:body>
+                    <p> <h:commandButton action="#{database.checkUser(loginBean.make())}" style="color:black; background-color:yellow" value="#{msgs.login}"/></p> 
+
+                    <p> <a href="help.xhtml" >#{msgs.help}</a></p>
+                </div>
+            </h:form>
+
+        </b:container>
+    </h:body>
 </html>
