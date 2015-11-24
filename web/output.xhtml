@@ -6,13 +6,23 @@
       xmlns:h="http://java.sun.com/jsf/html">
    <h:head>
       <title>#{msgs.title}</title>
+      
+     <style>
+    table {
+    width:50%;
+    empty-cells: hide;
+    text-align: center;
+   }
+</style>
+          
    </h:head>
+    
    <h:body>
           
           <h1 style="color:#00cccc;text-align: center; text-shadow: 2px 2px black"> #{msgs.hello} #{database.name} #{msgs.title}</h1>
           <h3 style="text-align: center"> <u> #{msgs.results}</u> </h3>
          
-          <table  style="width:50%" align="center" >
+          <table  border="2" align="center"  >
                 <tr> <td>    <b>   Carrier    </b> </td>  <td>  <b> Plan Name   </b> </td>   <td>   <b>  Cost   </b>    </td>  </tr>
                 <tr> <td> #{planBean.plan1Carrier} </td>  <td> #{planBean.plan1Name} </td>   <td> #{planBean.plan1Cost} </td>  </tr>
                 <tr> <td> #{planBean.plan2Carrier} </td>  <td> #{planBean.plan2Name} </td>   <td> #{planBean.plan2Cost} </td>  </tr>
