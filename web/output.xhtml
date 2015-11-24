@@ -7,13 +7,80 @@
    <h:head>
       <title>#{msgs.title}</title>
       
-     <style>
-    table {
-    width:50%;
-    empty-cells: hide;
-    text-align: center;
-   }
-</style>
+      <style>
+         
+html {
+  background: rgb(246, 248, 248);
+}
+body {
+  padding: 56px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 560;  
+}
+.promos {
+  width: 1120px;
+  margin: 0 auto;
+  margin-top: 70px;
+}
+.promo {
+  width: 350px;
+  background: #0F1012; 
+  color: #f9f9f9;
+  float: left;
+}
+.deal {
+  padding: 14px 0 0 0;
+}
+.deal span {
+  display: block;
+  text-align: center;
+}
+.deal span:first-of-type {
+  font-size: 32px;  
+}
+.deal span:last-of-type {
+  font-size: 18px;
+}
+
+.promo .price {
+  display: block;
+  width: 350px;  
+  background: #292b2e;
+  margin: 21px 0 14px 0;
+  text-align: center;
+  font-size: 32px;
+  padding: 21px 0 17px 0;
+}
+ul {
+  display: block;
+  margin: 28px 0 14px 0;
+  padding: 0;
+  list-style-type: none;
+  text-align: center;
+  color: #999999;
+}
+li {
+  display: block;
+  margin: 14px 0 0 0;
+}
+.scale {
+  transform: scale(1.2);
+  box-shadow: 0 0 5px 1px rgba(20, 20, 20, 0.8);
+}
+
+.scale2 {
+  transform: scale(1.1);
+  box-shadow: 0 0 5px 1px rgba(20, 20, 20, 0.8);
+}
+
+.scale button {
+  background: #64AAA4;
+}
+.scale .price {
+  color: #64AAA4;
+}
+      </style>
           
    </h:head>
     
@@ -22,19 +89,75 @@
           <h1 style="color:#00cccc;text-align: center; text-shadow: 2px 2px black"> #{msgs.hello} #{database.name} #{msgs.title}</h1>
           <h3 style="text-align: center"> <u> #{msgs.results}</u> </h3>
          
-          <table  border="2" align="center"  >
-                <tr> <td>    <b>   Carrier    </b> </td>  <td>  <b> Plan Name   </b> </td>   <td>   <b>  Cost   </b>    </td>  </tr>
-                <tr> <td> #{planBean.plan1Carrier} </td>  <td> #{planBean.plan1Name} </td>   <td> #{planBean.plan1Cost} </td>  </tr>
-                <tr> <td> #{planBean.plan2Carrier} </td>  <td> #{planBean.plan2Name} </td>   <td> #{planBean.plan2Cost} </td>  </tr>
-                <tr> <td> #{planBean.plan3Carrier} </td>  <td> #{planBean.plan3Name} </td>   <td> #{planBean.plan3Cost} </td>  </tr>
-        </table> 
-          
           <h:form>
-              <div style="text-align: center">
-                  
+          
+         <div class="promos"> 
+             
+<div class="promo scale2" style="background : silver">
+  <div class="deal">
+       <span> # 2 </span>
+    <span>#{planBean.plan2Carrier}</span>
+    <span>#{planBean.plan2Name}</span>
+  </div>
+    <span class="price" style="color: silver">$#{planBean.plan2Cost}</span>
+  <ul class="features">
+    <li>Some great feature</li>
+    <li>Another super feature</li>
+    <li>And more...</li>   
+  </ul>
+  <h:commandButton style="  border: none;
+  border-radius: 56px;
+  background: #292b2e;
+  color: #f9f9f9;
+  padding: 14px 52px;
+  margin: 14px 0 28px 84px" action="#{planBean.restart()}" value="More Info"/>
+</div>
+             
+<div class="promo scale" style="background : gold">
+  <div class="deal">
+    <span> # 1 </span>
+    <span>#{planBean.plan1Carrier}</span>
+     <span>#{planBean.plan1Name}</span>
+  </div>
+  <span class="price" style="color: gold">$#{planBean.plan1Cost}</span>
+  <ul class="features">
+    <li>Some great feature</li>
+    <li>Another super feature</li>
+    <li>And more...</li>   
+  </ul>
+   <h:commandButton style="  border: none;
+  border-radius: 56px;
+  background: #292b2e;
+  color: #f9f9f9;
+  padding: 14px 52px;
+  margin: 14px 0 28px 84px" action="#{planBean.restart()}" value="More Info"/>
+</div>
+             
+<div class="promo" style="background : #CD7F32">
+  <div class="deal">
+      <span> # 3</span>
+   <span>#{planBean.plan3Carrier}</span>
+     <span>#{planBean.plan3Name}</span>
+  </div>
+  <span class="price" style="color: #CD7F32">$#{planBean.plan3Cost}</span>
+  <ul class="features">
+    <li>Choose the one on the left</li>
+    <li>We need moneyy</li>
+    <li>And more...</li>   
+  </ul>
+   <h:commandButton style="  border: none;
+  border-radius: 56px;
+  background: #292b2e;
+  color: #f9f9f9;
+  padding: 14px 52px;
+  margin: 14px 0 28px 84px" action="#{planBean.restart()}" value="More Info"/>
+</div>
+             
+</div>
+          
+              <div style="text-align: center" align="center">        
                   <p> <h:commandButton action="#{planBean.restart()}" style="color:black; background-color:yellow" value="#{msgs.back}"/></p> 
                   <p> <a href="help.xhtml" >#{msgs.help}</a></p>
-
               </div>
               
           </h:form>
