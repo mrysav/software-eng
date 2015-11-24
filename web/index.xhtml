@@ -10,7 +10,14 @@
         <title>#{msgs.title}</title>
     </h:head>
     <h:body>
-        <b:navBar brand="PhoneDB" brandHref="#"></b:navBar>
+        <b:navBar brand="PhoneDB" brandHref="#">
+        <b:navbarLinks>
+            <b:navLink value="Input" outcome="input"></b:navLink>
+            <b:navLink value="Register" outcome="register"></b:navLink>
+            <b:navLink value="Plans" outcome="output"></b:navLink>
+            <b:navLink value="Help" outcome="help"></b:navLink>
+        </b:navbarLinks>
+        </b:navBar>
         <b:container>
             <b:row>
                 <h1 class="text-center">#{msgs.title}</h1>
@@ -30,9 +37,6 @@
                 </h:form>
             </b:row>
             <br></br>
-            <b:row class="text-center">
-                <a href="help.xhtml" >#{msgs.help}</a>
-            </b:row>
         </b:container>
     </h:body>
 </html>
