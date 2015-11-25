@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
         <title>Plan Help Page</title>
 
-    </head>
-    <body>
+    </h:head>
+    <h:body>
+        <b:navBar brand="PhoneDB" brandHref="index.xhtml">
+        <b:navbarLinks>
+            <b:navLink value="Register" outcome="register"></b:navLink>
+            <b:navLink value="Input" outcome="input"></b:navLink>
+            <b:navLink value="Plans" outcome="output"></b:navLink>
+            <b:navLink value="Help" outcome="help"></b:navLink>
+        </b:navbarLinks>
+        </b:navBar>
         <div style="text-align:center">
             <u> Create/Modify help instructions here</u> </div>
         <div style="text-align:center">
@@ -16,5 +26,5 @@
         <p> Plan Help</p>
         <a href="javascript:history.back()">Return to previous page</a>
         </div>
-    </body>
+    </h:body>
 </html>

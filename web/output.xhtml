@@ -3,7 +3,8 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui">
    <h:head>
       <title>#{msgs.title}</title>
       
@@ -94,12 +95,27 @@ a {
   padding: 10px 37px;
   margin: 8px 0 0 0
 }
+#top{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
       </style>
           
    </h:head>
     
    <h:body>
-          
+       <div id="top">
+          <b:navBar brand="PhoneDB" brandHref="index.xhtml">
+        <b:navbarLinks>
+            <b:navLink value="Register" outcome="register"></b:navLink>
+            <b:navLink value="Input" outcome="input"></b:navLink>
+            <b:navLink value="Plans" outcome="output"></b:navLink>
+            <b:navLink value="Help" outcome="help"></b:navLink>
+           </b:navbarLinks>
+        </b:navBar>
+       </div>
           <h1 style="color:#00cccc;text-align: center; text-shadow: 2px 2px black"> #{msgs.hello} #{database.name} #{msgs.title}</h1>
           <h3 style="text-align: center"> <u> #{msgs.results}</u> </h3>
          

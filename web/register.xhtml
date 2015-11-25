@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:b="http://bootsfaces.net/ui">
   
     
     
@@ -13,6 +14,14 @@
      
    </h:head>
    <h:body>
+       <b:navBar brand="PhoneDB" brandHref="index.xhtml">
+        <b:navbarLinks>
+            <b:navLink value="Register" outcome="register"></b:navLink>
+            <b:navLink value="Input" outcome="input"></b:navLink>
+            <b:navLink value="Plans" outcome="output"></b:navLink>
+            <b:navLink value="Help" outcome="help"></b:navLink>
+           </b:navbarLinks>
+        </b:navBar>
        
           <h1 style="color:#00cccc; text-align: center;text-shadow: 2px 2px black">#{msgs.regtitle}</h1>
          
