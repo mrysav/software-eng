@@ -87,7 +87,7 @@ li {
     padding-right: 50px;
 }
 
-a {
+a{
   border: none;
   border-radius: 40px;
   background: #292b2e;
@@ -116,11 +116,10 @@ a {
            </b:navbarLinks>
         </b:navBar>
        </div>
+       
           <h1 style="color:#00cccc;text-align: center; text-shadow: 2px 2px black"> #{msgs.hello} #{database.name} #{msgs.title}</h1>
           <h3 style="text-align: center"> <u> #{msgs.results}</u> </h3>
-         
-          <h:form>
-          
+   
          <div class="promos"> 
              
 <div class="promo scale2 silver" style="background : silver">
@@ -129,12 +128,17 @@ a {
     <span>#{planBean.plan2Carrier}</span>
     <span>#{planBean.plan2Name}</span>
   </div>
-    <span class="price" style="color: silver">$#{planBean.plan2Cost}</span>
+    <span class="price" style="color: silver; width: 290px;">$#{planBean.plan2Cost}</span>
   <ul class="features">
     <li>Some great feature</li>
     <li>Another super feature</li>
     <li>And more...</li>   
-   <li><a href="#{planBean.plan1URL}">More Info</a></li>
+    <li><a style="border: none;
+  border-radius: 40px;
+  background: #292b2e;
+  color: #f9f9f9;
+  padding: 10px 37px;
+  margin: 8px 0 0 0" href="#{planBean.plan1URL}">More Info</a></li>
   </ul>
   
 </div>
@@ -150,7 +154,12 @@ a {
     <li>Some great feature</li>
     <li>Another super feature</li>
     <li>And more...</li>   
-    <li><a href="#{planBean.plan2URL}">More Info</a></li>
+    <li><a style="border: none;
+  border-radius: 40px;
+  background: #292b2e;
+  color: #f9f9f9;
+  padding: 10px 37px;
+  margin: 8px 0 0 0" href="#{planBean.plan2URL}">More Info</a></li>
   </ul>
   
 </div>
@@ -166,33 +175,35 @@ a {
     <li>Choose the one on the left</li>
     <li>We need moneyy</li>
     <li>And more...</li>   
-    <li><a href="#{planBean.plan3URL}">More Info</a></li>
+    <li><a style="border: none;
+  border-radius: 40px;
+  background: #292b2e;
+  color: #f9f9f9;
+  padding: 10px 37px;
+  margin: 8px 0 0 0" href="#{planBean.plan3URL}">More Info</a></li>
   </ul>
   
 </div>
              
 </div>
-          
+              <h:form>
+                 
+                  <div>   
               <div style="text-align: center" align="center">        
-                   
-                  <p> <a href="help.xhtml" >#{msgs.help}</a></p>
-              </div>
-              
+                           
               <h:outputText style="color: #64AAA4; font: bold; font-size: large" value="Need adjustment?"/>
-             
-              <div style="text-align: center">
              
                   <p> Minutes:  <h:inputText id="mins" value="#{planBean.mins}" required="true" requiredMessage="Required Field" 
                    />  
                  <h:message style="color:red" for="mins"/> 
                   </p>
                   
-              <p>  Texts:  <h:inputText id="texts" required="true" requiredMessage="Required Field" 
+              <p> &nbsp; Texts: &nbsp; <h:inputText id="texts" required="true" requiredMessage="Required Field" 
                   value="#{planBean.texts}"  />  
                  <h:message style="color:red" for="texts"/> 
              </p>
                   
-             <p> Data: <h:inputText id="gigs" required="true" requiredMessage="Required Field" 
+             <p> &nbsp;&nbsp; Data: &nbsp;<h:inputText id="gigs" required="true" requiredMessage="Required Field" 
                   value="#{planBean.gigs}"  />  
                  <h:message style="color:red" for="gigs"/> 
              </p>
@@ -202,7 +213,10 @@ a {
                      <p> <a href="help.xhtml" >#{msgs.help}</a></p>
              </p>
                   <p> <h:commandButton action="#{planBean.restart()}"  value="#{msgs.back}"/></p>
-             </div>
+             
+                </div>
+                  
+                  </div> 
           </h:form>
           
    </h:body>
