@@ -11,25 +11,28 @@
     </h:head>
     <h:body>
         <b:navBar brand="#{msgs.brand}">
-        <b:navbarLinks>
-            <b:navLink value="Register" outcome="register"></b:navLink>
-            <b:navLink value="Help" outcome="help"></b:navLink>
-        </b:navbarLinks>
+            <b:navbarLinks>
+                <b:navLink value="Register" outcome="register"></b:navLink>
+                <b:navLink value="Help" outcome="help"></b:navLink>
+            </b:navbarLinks>
         </b:navBar>
         <b:container>
             <b:row>
                 <h2 class="text-center">#{msgs.title}</h2>
                 <h5 class="text-center">#{msgs.prompt}</h5>
-                <br></br>
-                <div class="text-center"><b:button outcome="#{loginBean.register()}" value="#{msgs.register}"/></div>
-                <br></br>
+                <br/>
+                <div class="text-center"><b:button outcome="register" value="#{msgs.register}"/></div>
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    <b:messages globalOnly="true"/>
+                </div>
+                <br/>
 
                 <h:form class="col-md-2 col-md-offset-5 text-center">
-                    <b:inputText id="username" required="true" requiredMessage="Required Field" value="#{loginBean.username}" p:placeholder="#{msgs.username}" />  
                     <h:message style="color: red" for="username"/> 
+                    <b:inputText id="username" required="true" requiredMessage="Required Field" value="#{loginBean.username}" p:placeholder="#{msgs.username}" />  
 
-                    <b:inputSecret id ="password" required="true" value="#{loginBean.password}" requiredMessage="Required Field" p:placeholder="#{msgs.password}"/> 
                     <h:message style="color: red" for="password"/>
+                    <b:inputSecret id ="password" required="true" value="#{loginBean.password}" requiredMessage="Required Field" p:placeholder="#{msgs.password}"/> 
 
                     <div class="text-center"><b:commandButton action="#{database.checkUser(loginBean.make())}" value="#{msgs.login}"/></div>
                 </h:form>

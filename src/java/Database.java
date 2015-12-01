@@ -1,9 +1,7 @@
 
 import com.corejsf.LoginBean;
 import com.corejsf.RegisterBean;
-import java.io.IOException;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,7 +11,6 @@ import javax.annotation.Resource;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 import javax.sql.DataSource;
-import java.sql.DriverManager;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
@@ -122,17 +119,18 @@ public class Database {
 
     public String checkUser(LoginBean User) throws SQLException {
         try (Connection conn = dataSource.getConnection()) {
-            final String queryCheck = "SELECT * FROM users WHERE \"name\" = '" + User.getUsername() + "'"
-                    + " AND \"password\" ='" + User.getPassword() + "'";
-            final Statement ps = conn.createStatement();
+            String queryCheck = "SELECT * FROM users WHERE \"name\" = '" + User.getUsername() + "'" + " AND \"password\" ='" + User.getPassword() + "'";
+            Statement ps = conn.createStatement();
 
-            final ResultSet resultSet = ps.executeQuery(queryCheck);
+            ResultSet resultSet = ps.executeQuery(queryCheck);
             if (resultSet.next()) {
                 return "input";
             }
         }
+        
         FacesContext facesContext = FacesContext.getCurrentInstance();
-        facesContext.addMessage("loginForm", new FacesMessage("Incorrect Username or Password!"));
+        // Send a global message ('null') so we don't duplicate login error messages
+        facesContext.addMessage(null, new FacesMessage("Error!", "Username or password was incorrect."));
         return null;
     }
 }
