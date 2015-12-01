@@ -143,5 +143,4 @@ public class Database {
         facesContext.addMessage("loginForm", new FacesMessage("Incorrect Username or Password!"));
         return null;
     }
-
 }

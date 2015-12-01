@@ -10,11 +10,9 @@
         <title>#{msgs.title}</title>
     </h:head>
     <h:body>
-        <b:navBar brand="PhoneDB" brandHref="#">
+        <b:navBar brand="FindAPlan">
         <b:navbarLinks>
             <b:navLink value="Register" outcome="register"></b:navLink>
-            <b:navLink value="Input" outcome="input"></b:navLink>
-            <b:navLink value="Plans" outcome="output"></b:navLink>
             <b:navLink value="Help" outcome="help"></b:navLink>
         </b:navbarLinks>
         </b:navBar>
@@ -26,11 +24,11 @@
                 <div class="text-center"><b:button outcome="#{loginBean.register()}" value="#{msgs.register}"/></div>
                 <br></br>
 
-                <h:form class="col-md-4 col-md-offset-4">
-                    <b:inputText id="username" style="text-align: center" required="true" requiredMessage="Required Field" value="#{loginBean.username}" p:placeholder="#{msgs.username}" />  
+                <h:form class="col-md-2 col-md-offset-5 text-center">
+                    <b:inputText id="username" required="true" requiredMessage="Required Field" value="#{loginBean.username}" p:placeholder="#{msgs.username}" />  
                     <h:message style="color: red" for="username"/> 
 
-                    <b:inputSecret id ="password" style="text-align: center" required="true" value="#{loginBean.password}" requiredMessage="Required Field" p:placeholder="#{msgs.password}"/> 
+                    <b:inputSecret id ="password" required="true" value="#{loginBean.password}" requiredMessage="Required Field" p:placeholder="#{msgs.password}"/> 
                     <h:message style="color: red" for="password"/>
 
                     <div class="text-center"><b:commandButton action="#{database.checkUser(loginBean.make())}" value="#{msgs.login}"/></div>
