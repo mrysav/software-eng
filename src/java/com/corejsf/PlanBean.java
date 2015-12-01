@@ -21,7 +21,7 @@ public class PlanBean implements Serializable {
     
     private int mins;
     private int texts;
-    private int gigs;
+    private float gigs;
     private String plan1Carrier;
     private String plan1Name;
     private String plan1Cost;
@@ -174,11 +174,11 @@ public class PlanBean implements Serializable {
      return this.texts; 
     }
     
-     public void setGigs(int gigs){
+     public void setGigs(float gigs){
      this.gigs = gigs;   
     }
     
-    public int getGigs(){
+    public float getGigs(){
      return this.gigs; 
     }
 
