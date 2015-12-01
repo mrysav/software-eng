@@ -16,3 +16,7 @@ Insert into plans
     Values (Default, 'Verizon','Extra Large', 'http://www.verizonwireless.com/landingpages/verizon-plan/', 'TRUE', 'TRUE', 'FALSE', 'FALSE', 'FALSE', 0, 0, 12, 80);
 Insert into plans
     Values (Default, 'Verizon','Double Extra Large', 'http://www.verizonwireless.com/landingpages/verizon-plan/', 'TRUE', 'TRUE', 'FALSE', 'FALSE', 'FALSE', 0, 0, 18, 100);
+Insert into plans
+    Values (Default, 'AT&T','$60 Monthly Plan', 'https://www.att.com/shop/wireless/plans/planconfigurator.html?tab=gophone&plan=basic', 'TRUE', 'TRUE', 'FALSE', 'FALSE', 'FALSE', 0, 0, 4, 60);
+Insert into plans
+    Values (Default, 'AT&T','$30 Monthly Plan', 'https://www.att.com/shop/wireless/plans/planconfigurator.html?tab=gophone&plan=basic', 'TRUE', 'TRUE', 'FALSE', 'FALSE', 'FALSE', 0, 0, .1, 30);
