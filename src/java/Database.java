@@ -21,8 +21,6 @@ import javax.faces.context.FacesContext;
 @ApplicationScoped
 public class Database {
 
-    private String currentUser;
-
     @Resource(name = "jdbc/databaseDB")
     private DataSource dataSource;
 
@@ -106,10 +104,6 @@ public class Database {
 
     }
 
-    public String getName() {
-        return currentUser;
-    }
-
     public void addUser(RegisterBean User) throws SQLException {
 
         try (Connection conn = dataSource.getConnection()) {
@@ -118,7 +112,6 @@ public class Database {
                     + "VALUES ('" + User.getUsername() + "','" + User.getPassword1() + "')";
 
             st.executeUpdate(sql);
-            this.currentUser = User.getUsername();
 
         } catch (Exception e) {
             System.err.println("Got an exception! ");
@@ -135,7 +128,6 @@ public class Database {
 
             final ResultSet resultSet = ps.executeQuery(queryCheck);
             if (resultSet.next()) {
-                currentUser = User.getUsername();
                 return "input";
             }
         }

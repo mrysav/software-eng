@@ -1,51 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:b="http://bootsfaces.net/ui">
-   <h:head>
-      <title>#{msgs.title}</title>
-   </h:head>
-   <h:body>
-         <b:navBar brand="PhoneDB" brandHref="index.xhtml">
-        <b:navbarLinks>
-            <b:navLink value="Register" outcome="register"></b:navLink>
-            <b:navLink value="Input" outcome="input"></b:navLink>
-            <b:navLink value="Plans" outcome="output"></b:navLink>
-            <b:navLink value="Help" outcome="help"></b:navLink>
-           </b:navbarLinks>
+    <h:head>
+        <title>#{msgs.title}</title>
+    </h:head>
+    <h:body>
+        <b:navBar brand="#{msgs.brand}">
+            <b:navbarLinks>
+                <b:navLink value="Input" outcome="input"></b:navLink>
+                <b:navLink value="Plans" outcome="output"></b:navLink>
+                <b:navLink value="Help" outcome="help"></b:navLink>
+                <b:navLink value="Logout"></b:navLink>
+            </b:navbarLinks>
         </b:navBar>
-          
-          <h1 style="color:#00cccc;text-align: center; text-shadow: 2px 2px black"> #{msgs.hello} #{database.name} #{msgs.title}</h1>
-          <h3 style="text-align: center"> <u> #{msgs.heading} </u> </h3>
-         
-          <h:form>
-              <div style="text-align: center">
-             
-                  <p> #{msgs.mins}  <h:inputText id="mins" value="#{planBean.mins}" required="true" requiredMessage="Required Field" 
-                  style="color:black; background-color:yellow" p:placeholder="Enter only a number"/>  
-                 <h:message style="color:red" for="mins"/> 
-                  </p>
-                  
-              <p>  &nbsp;&nbsp; #{msgs.texts} &nbsp;&nbsp; <h:inputText id="texts" required="true" requiredMessage="Required Field" 
-                  value="#{planBean.texts}" style="color:black; background-color:yellow" p:placeholder="Sum of sent+recieved"/>  
-                 <h:message style="color:red" for="texts"/> 
-             </p>
-                  
-             <p> #{msgs.gigs} <h:inputText id="gigs" required="true" requiredMessage="Required Field" 
-                  value="#{planBean.gigs}" style="color:black; background-color:yellow" p:placeholder="Can be found on phone"/>  
-                 <h:message style="color:red" for="gigs"/> 
-             </p>
-             
-                  <p> <h:commandButton action="#{planBean.submit()}" style="color:black; background-color:yellow" value="#{msgs.submit}"/></p> 
-             <p>
-                     <p> <a href="help.xhtml" >#{msgs.help}</a></p>
-             </p>
-             </div>
-          </h:form>
-          
-   </h:body>
+        <b:container>
+            <b:row>
+                <h2 class="text-center">#{msgs.hello}, #{loginBean.username}!</h2>
+                <h4 class="text-center">#{msgs.heading}</h4>
+                <br/>
+            </b:row>
+            <b:row>
+                <h:form class="col-lg-4 col-lg-offset-4 text-center form-horizontal">
+                    <h:message style="color:red" for="mins"/>
+                    <div class="form-group">
+                        <h:outputText value="#{msgs.mins}" class="col-sm-8 control-label" />  
+                        <div class="col-sm-4">
+                            <b:inputText id="mins" value="#{planBean.mins}" required="true" requiredMessage="Required field"
+                                         class="form-control" p:placeholder="talk time"/>
+                        </div>
+                    </div>
+
+                    <h:message style="color:red" for="texts"/>
+                    <div class="form-group">
+                        <h:outputText value="#{msgs.texts}" class="col-sm-8 control-label" />  
+                        <div class="col-sm-4">
+                            <b:inputText id="texts" required="true" requiredMessage="Required field"
+                                         value="#{planBean.texts}" class="form-control" p:placeholder="sent+received"/>
+                        </div>
+                    </div>
+
+                    <h:message style="color:red" for="gigs"/>
+                    <div class="form-group">
+                        <h:outputText value="#{msgs.gigs}" class="col-sm-8 control-label" />  
+                        <div class="col-sm-4">
+                            <b:inputText id="gigs" required="true" requiredMessage="Required Field"
+                                         value="#{planBean.gigs}" class="form-control" p:placeholder="in gigabytes"/>
+                        </div>
+                    </div>
+
+                    <b:commandButton action="#{planBean.submit()}" value="#{msgs.submit}"/>
+                </h:form>
+            </b:row>
+        </b:container>
+    </h:body>
 </html>
