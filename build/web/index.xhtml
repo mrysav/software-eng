@@ -10,7 +10,7 @@
         <title>#{msgs.title}</title>
     </h:head>
     <h:body>
-        <b:navBar brand="FindAPlan">
+        <b:navBar brand="#{msgs.brand}">
         <b:navbarLinks>
             <b:navLink value="Register" outcome="register"></b:navLink>
             <b:navLink value="Help" outcome="help"></b:navLink>
@@ -18,7 +18,7 @@
         </b:navBar>
         <b:container>
             <b:row>
-                <h1 class="text-center">#{msgs.title}</h1>
+                <h2 class="text-center">#{msgs.title}</h2>
                 <h5 class="text-center">#{msgs.prompt}</h5>
                 <br></br>
                 <div class="text-center"><b:button outcome="#{loginBean.register()}" value="#{msgs.register}"/></div>
