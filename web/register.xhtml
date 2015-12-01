@@ -2,7 +2,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:b="http://bootsfaces.net/ui">
@@ -23,21 +22,18 @@
                 <br/>
                 <h:form id="loginForm" class="col-md-4 col-md-offset-4 text-center"> 
                     <h:message style="color:red" for="regname"/>    
-                    <b:inputText id="regname" style="text-align: center" required="true" requiredMessage="Required Field" 
+                    <b:inputText id="regname" required="true" requiredMessage="Required Field" 
                                  value="#{registerBean.username}"  p:placeholder="Enter username"/> 
 
                     <h:message style="color:red" for="regpass1"/>
-                    <b:inputSecret id="regpass1" style="text-align: center" required="true" requiredMessage="Required Field"
+                    <b:inputSecret id="regpass1" required="true" requiredMessage="Required Field"
                                    value="#{registerBean.password1}"  p:placeholder="Enter password" /> 
 
                     <h:message style="color:red" for="regpass2"/>
-                    <b:inputSecret id="regpass2" style="text-align: center" required="true" requiredMessage="Required Field" 
+                    <b:inputSecret id="regpass2" required="true" requiredMessage="Required Field" 
                                    value="#{registerBean.password2}" p:placeholder="Reenter password"/>
                     
-                    <b:commandButton action="#{database.registerUser(registerBean.getUser())}"  value="#{msgs.register}"/>
-                    
-                    <br/><br/>
-                    <h:commandLink action="index" value="#{msgs.back}"/>
+                    <b:commandButton action="#{database.registerUser(registerBean.make())}"  value="#{msgs.register}"/>
                 </h:form>
             </b:row>
         </b:container>
