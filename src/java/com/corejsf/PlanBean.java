@@ -98,10 +98,10 @@ public class PlanBean implements Serializable {
             }
             
             if (rs.getBoolean("unlimited_data" )){
-                plan1Message[1] = "Unlimited data";
+                plan1Message[2] = "Unlimited data";
             }
             else {
-                plan1Message[1] = rs.getInt("data_gb_per_month") + " GB of data per month";
+                plan1Message[2] = rs.getFloat("data_gb_per_month") + " GB of data per month";
             }
            
             }
@@ -129,10 +129,10 @@ public class PlanBean implements Serializable {
             }
             
             if (rs.getBoolean("unlimited_data" )){
-                plan2Message[1] = "Unlimited data";
+                plan2Message[2] = "Unlimited data";
             }
             else {
-                plan2Message[1] = rs.getInt("data_gb_per_month") + " GB of data per month";
+                plan2Message[2] = rs.getFloat("data_gb_per_month") + " GB of data per month";
             }
             
             }
@@ -160,10 +160,10 @@ public class PlanBean implements Serializable {
             }
             
             if (rs.getBoolean("unlimited_data" )){
-                plan3Message[1] = "Unlimited data";
+                plan3Message[2] = "Unlimited data";
             }
             else {
-                plan3Message[1] = rs.getInt("data_gb_per_month") + " GB of data per month";
+                plan3Message[2] = rs.getFloat("data_gb_per_month") + " GB of data per month";
             }
             }
             rs = ps.getResultSet();
