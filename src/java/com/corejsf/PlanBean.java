@@ -26,16 +26,19 @@ public class PlanBean implements Serializable {
     private String plan1Name;
     private String plan1Cost;
     private String plan1URL;
+    private String[] plan1Message = new String[3];
    
     private String plan2Carrier;
     private String plan2Name;
     private String plan2Cost;
     private String plan2URL;
+    private String[] plan2Message = new String[3];
     
      private String plan3Carrier;
     private String plan3Name;
     private String plan3Cost;
     private String plan3URL;
+    private String[] plan3Message = new String[3];
     
         private static final String databaseURL = "jdbc:derby://ukko.d.umn.edu:16020/databaseDB";
     
@@ -77,6 +80,30 @@ public class PlanBean implements Serializable {
             plan1Name =  rs.getString("plan_name");
             plan1Cost = "" + rs.getInt("monthy_price");
             plan1URL = rs.getString("URL");
+          
+            
+            if (rs.getBoolean("unlimited_calls" )){
+                plan1Message[0] = "Unlimited calls";
+            }
+            else {
+                plan1Message[0] = rs.getInt("minutes_per_month") + " calls per month";
+            }
+            
+            if (rs.getBoolean("unlimited_texts" )){
+                plan1Message[1] = "Unlimited texts";
+            }
+            
+            else {
+                plan1Message[1] = rs.getInt("texts_per_month") + " texts per month";
+            }
+            
+            if (rs.getBoolean("unlimited_data" )){
+                plan1Message[1] = "Unlimited data";
+            }
+            else {
+                plan1Message[1] = rs.getInt("data_gb_per_month") + " GB of data per month";
+            }
+           
             }
             
             else if (i == 1){
@@ -85,6 +112,29 @@ public class PlanBean implements Serializable {
             plan2Name = rs.getString("plan_name");
             plan2Cost = "" +rs.getInt("monthy_price");
             plan2URL = rs.getString("URL");
+            
+             if (rs.getBoolean("unlimited_calls" )){
+                plan2Message[0] = "Unlimited calls";
+            }
+            else {
+                plan2Message[0] = rs.getInt("minutes_per_month") + " calls per month";
+            }
+            
+            if (rs.getBoolean("unlimited_texts" )){
+                plan2Message[1] = "Unlimited texts";
+            }
+            
+            else {
+                plan2Message[1] = rs.getInt("texts_per_month") + " texts per month";
+            }
+            
+            if (rs.getBoolean("unlimited_data" )){
+                plan2Message[1] = "Unlimited data";
+            }
+            else {
+                plan2Message[1] = rs.getInt("data_gb_per_month") + " GB of data per month";
+            }
+            
             }
             
             else {
@@ -93,6 +143,28 @@ public class PlanBean implements Serializable {
             plan3Name =  rs.getString("plan_name");
             plan3Cost =  "" + rs.getInt("monthy_price");
             plan3URL = rs.getString("URL");
+            
+             if (rs.getBoolean("unlimited_calls" )){
+                plan3Message[0] = "Unlimited calls";
+            }
+            else {
+                plan3Message[0] = rs.getInt("minutes_per_month") + " calls per month";
+            }
+            
+            if (rs.getBoolean("unlimited_texts" )){
+                plan3Message[1] = "Unlimited texts";
+            }
+            
+            else {
+                plan3Message[1] = rs.getInt("texts_per_month") + " texts per month";
+            }
+            
+            if (rs.getBoolean("unlimited_data" )){
+                plan3Message[1] = "Unlimited data";
+            }
+            else {
+                plan3Message[1] = rs.getInt("data_gb_per_month") + " GB of data per month";
+            }
             }
             rs = ps.getResultSet();
             i++;
@@ -108,6 +180,18 @@ public class PlanBean implements Serializable {
         return plan1Carrier;
     }
     
+    public String getPlan1Message1(){
+        return plan1Message[0];
+    }
+    
+    public String getPlan1Message2(){
+        return plan1Message[1];
+    }
+    
+    public String getPlan1Message3(){
+        return plan1Message[2];
+    }
+    
     public String getPlan1Name(){
         return plan1Name;
     }
@@ -118,6 +202,18 @@ public class PlanBean implements Serializable {
     
     public String getPlan1URL(){
         return plan1URL;
+    }
+    
+    public String getPlan2Message1(){
+        return plan1Message[0];
+    }
+    
+    public String getPlan2Message2(){
+        return plan1Message[1];
+    }
+    
+    public String getPlan2Message3(){
+        return plan1Message[2];
     }
     
      public String getPlan2Carrier(){
@@ -135,6 +231,19 @@ public class PlanBean implements Serializable {
      public String getPlan2URL(){
         return plan2URL;
     }
+    
+     public String getPlan3Message1(){
+        return plan1Message[0];
+    }
+    
+    public String getPlan3Message2(){
+        return plan1Message[1];
+    }
+    
+    public String getPlan3Message3(){
+        return plan1Message[2];
+    }
+     
      
      public String getPlan3Carrier(){
         return plan3Carrier;
