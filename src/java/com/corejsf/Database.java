@@ -1,6 +1,5 @@
+package com.corejsf;
 
-import com.corejsf.LoginBean;
-import com.corejsf.RegisterBean;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
