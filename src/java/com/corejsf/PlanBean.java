@@ -85,12 +85,22 @@ public class PlanBean implements Serializable {
             if (rs.getBoolean("unlimited_calls" )){
                 plan1Message[0] = "Unlimited calls!";
             }
+            
+            else if (rs.getInt("minutes_per_month") ==0){
+                 plan1Message[0] = "No calls allowed";
+            }
+            
             else {
+                
                 plan1Message[0] = rs.getInt("minutes_per_month") + " calls per month";
             }
             
             if (rs.getBoolean("unlimited_texts" )){
                 plan1Message[1] = "Unlimited texts!";
+            }
+            
+            else if (rs.getInt("texts_per_month") ==0){
+                 plan1Message[1] = "No texts allowed";
             }
             
             else {
@@ -99,6 +109,9 @@ public class PlanBean implements Serializable {
             
             if (rs.getBoolean("unlimited_data" )){
                 plan1Message[2] = "Unlimited data!";
+            }
+             else if (rs.getFloat("data_gb_per_month") ==0){
+                 plan1Message[2] = "Wifi data only";
             }
             else {
                 plan1Message[2] = rs.getFloat("data_gb_per_month") + " GB of data per month";
@@ -116,6 +129,9 @@ public class PlanBean implements Serializable {
              if (rs.getBoolean("unlimited_calls" )){
                 plan2Message[0] = "Unlimited calls!";
             }
+             else if (rs.getInt("minutes_per_month") ==0){
+                 plan2Message[0] = "No calls allowed";
+            }
             else {
                 plan2Message[0] = rs.getInt("minutes_per_month") + " calls per month";
             }
@@ -123,13 +139,18 @@ public class PlanBean implements Serializable {
             if (rs.getBoolean("unlimited_texts" )){
                 plan2Message[1] = "Unlimited texts!";
             }
-            
+            else if (rs.getInt("texts_per_month") ==0){
+                 plan2Message[1] = "No texts allowed";
+            }
             else {
                 plan2Message[1] = rs.getInt("texts_per_month") + " texts per month";
             }
             
             if (rs.getBoolean("unlimited_data" )){
                 plan2Message[2] = "Unlimited data!";
+            }
+            else if (rs.getFloat("data_gb_per_month") ==0){
+                 plan2Message[2] = "Wifi data only";
             }
             else {
                 plan2Message[2] = rs.getFloat("data_gb_per_month") + " GB of data per month";
@@ -147,6 +168,9 @@ public class PlanBean implements Serializable {
              if (rs.getBoolean("unlimited_calls" )){
                 plan3Message[0] = "Unlimited calls!";
             }
+             else if (rs.getInt("minutes_per_month") ==0){
+                 plan3Message[0] = "No calls allowed";
+            }
             else {
                 plan3Message[0] = rs.getInt("minutes_per_month") + " calls per month";
             }
@@ -154,13 +178,18 @@ public class PlanBean implements Serializable {
             if (rs.getBoolean("unlimited_texts" )){
                 plan3Message[1] = "Unlimited texts!";
             }
-            
+            else if (rs.getInt("texts_per_month") ==0){
+                 plan3Message[1] = "No texts allowed";
+            }
             else {
                 plan3Message[1] = rs.getInt("texts_per_month") + " texts per month";
             }
             
             if (rs.getBoolean("unlimited_data" )){
                 plan3Message[2] = "Unlimited data!";
+            }
+            else if (rs.getFloat("data_gb_per_month") ==0){
+                 plan3Message[2] = "Wifi data only";
             }
             else {
                 plan3Message[2] = rs.getFloat("data_gb_per_month") + " GB of data per month";
