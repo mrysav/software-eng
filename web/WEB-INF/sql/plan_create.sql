@@ -1,8 +1,8 @@
 Create table plans (
 "id" INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-"carrier_name" VARCHAR(15) NOT NULL,
+"carrier_name" VARCHAR(30) NOT NULL,
 "plan_name" VARCHAR(30) NOT NULL,
-"URL" VARCHAR(100) NOT NULL,
+"URL" VARCHAR(300) NOT NULL,
 "unlimited_texts" BOOLEAN NOT NULL,
 "unlimited_calls" BOOLEAN NOT NULL,
 "unlimited_data" BOOLEAN NOT NULL,
