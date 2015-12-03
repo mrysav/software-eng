@@ -1,0 +1,5 @@
+CREATE TABLE users(
+    name VARCHAR(100) PRIMARY KEY,
+    password VARCHAR(32) NOT NULL,
+    salt VARCHAR(32) NOT NULL
+);

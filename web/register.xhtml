@@ -33,7 +33,7 @@
                     <b:inputSecret id="regpass2" required="true" requiredMessage="Required Field" 
                                    value="#{registerBean.password2}" p:placeholder="Reenter password"/>
                     
-                    <b:commandButton action="#{database.registerUser(registerBean.make())}"  value="#{msgs.register}"/>
+                    <b:commandButton action="#{registerBean.register()}"  value="#{msgs.register}"/>
                 </h:form>
             </b:row>
         </b:container>

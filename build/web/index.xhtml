@@ -34,7 +34,7 @@
                     <h:message style="color: red" for="password"/>
                     <b:inputSecret id ="password" required="true" value="#{loginBean.password}" requiredMessage="Required Field" p:placeholder="#{msgs.password}"/> 
 
-                    <div class="text-center"><b:commandButton action="#{database.checkUser(loginBean.make())}" value="#{msgs.login}"/></div>
+                    <div class="text-center"><b:commandButton action="#{loginBean.authenticate()}" value="#{msgs.login}"/></div>
                 </h:form>
             </b:row>
             <br></br>
