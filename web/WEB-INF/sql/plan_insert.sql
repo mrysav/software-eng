@@ -20,3 +20,10 @@ Insert into plans
     Values (Default, 'AT&T','$60 Monthly Plan', 'https://www.att.com/shop/wireless/plans/planconfigurator.html?tab=gophone&plan=basic', 'TRUE', 'TRUE', 'FALSE', 'FALSE', 'FALSE', 0, 0, 4, 60);
 Insert into plans
     Values (Default, 'AT&T','$30 Monthly Plan', 'https://www.att.com/shop/wireless/plans/planconfigurator.html?tab=gophone&plan=basic', 'TRUE', 'TRUE', 'FALSE', 'FALSE', 'FALSE', 0, 0, .1, 30);
+Insert into plans
+    Values (Default, 'Boost Mobile', 'Unlimited Plan', 'http://www.boostmobile.com/shop/plans/monthly-phone-plans/?icamp=INTC_GrowingData_PlansPage%20_TopBanner', 'TRUE', 'TRUE', 'TRUE', 0, 0, 1, 60);
+Insert into plans
+    Values (Default, 'Boost mobile', '2G plan', 'http://www.boostmobile.com/shop/plans/monthly-phone-plans/?icamp=INTC_GrowingData_PlansPage%20_TopBanner', 'TRUE', 'TRUE', 'FALSE', 0, 0, 2, 35);
+Insert into plans
+    Values (Default, 'Boost mobile', '5G plan', 'http://www.boostmobile.com/shop/plans/monthly-phone-plans/?icamp=INTC_GrowingData_PlansPage%20_TopBanner', 'TRUE', 'TRUE', 'FALSE', 0, 0, 5, 45);
+
