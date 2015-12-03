@@ -5,26 +5,134 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+        </script>
         <title>Plan Help Page</title>
 
     </h:head>
     <h:body>
         <b:navBar brand="#{msgs.brand}">
-        <b:navbarLinks>
-            <b:navLink value="Register" outcome="register"></b:navLink>
-            <b:navLink value="Input" outcome="input"></b:navLink>
-            <b:navLink value="Plans" outcome="output"></b:navLink>
-            <b:navLink value="Help" outcome="help"></b:navLink>
-        </b:navbarLinks>
+            <b:navbarLinks>
+                <b:navLink value="Login" outcome="index"></b:navLink>
+                <b:navLink value="Register" outcome="register"></b:navLink>
+
+            </b:navbarLinks>
         </b:navBar>
-        <div style="text-align:center">
-            <u> Create/Modify help instructions here</u> </div>
-        <div style="text-align:center">
-        <p> Login Help</p>
-        <p> Register Help</p>
-        <p> Input Help</p>
-        <p> Plan Help</p>
-        <a href="javascript:history.back()">Return to previous page</a>
-        </div>
+
+        
+        <b:container>
+            <div id='mainDiv' style="text-align: center">
+            <h3><a href = "#" onclick = "toggleReg()">Registration Help</a></h3>
+            <br></br>
+            <div id = "registerDiv" style="display:none; border:black solid" >
+                     Make sure you do not already have an account. If you do you won't be able to register.
+                    <br></br>
+                     Make sure your passwords match identical.
+                    <br></br>
+                     You password needs to contain both a character and number, and be over 8 characters long. 
+                    <br></br>
+                     You can click on the register button to go directly back to the login page after registering.
+                    <br></br>
+            </div>
+
+            <script>
+                function toggleReg() {
+                    var reg = document.getElementById("registerDiv");
+                    if (reg.style.display == "block") {
+                        reg.style.display = "none";
+                    }
+                    else {
+                        reg.style.display = "block";
+                    }
+                }
+            </script>
+
+
+            <h3> <a href = "#" onclick = "toggleLogin()">Login Help</a> </h3>
+            <br></br>
+            <div id = "loginDiv" style="display:none; border:black solid">
+                You must have already registered with FindAPlan. If you have not done so, please do so prior to logging in!
+                <br></br>
+                 Make sure your password is typed correctly. Please note that passwords are case sensitive, while usernames are not.
+                <br></br>
+                 Recall that passwords have specific constraints. You need both a number and a character. 
+                <br></br>
+                 You can create another account through the registration link at the top of the page if you have forgotten your credentials.
+                <br></br>
+            </div>
+
+            <script>
+                function toggleLogin() {
+                    var login = document.getElementById("loginDiv");
+                    if (login.style.display == "block") {
+                        login.style.display = "none";
+                    }
+                    else {
+                        login.style.display = "block";
+                    }
+                }
+            </script>
+
+            <h3><a href = "#" onclick = "toggleInput()">Input Help</a></h3>
+            <br></br>
+            <div id = "inputDiv" style="display:none; border:black solid">
+                 You should only enter whole numbers for minutes and texts! 
+                <br></br>
+                 Data use is in the form of gigabytes, but you can use decimals.
+                <br></br>
+                 Please enter input for all fields. If you need no minutes, for example, you can enter 0. 
+                <br></br>
+                 Remember that all data input should be on a monthly basis.
+                <br></br>
+            </div>
+
+            <script>
+                function toggleInput() {
+                    var input = document.getElementById("inputDiv");
+                    if (input.style.display == "block") {
+                        input.style.display = "none";
+                    }
+                    else {
+                        input.style.display = "block";
+                    }
+                }
+            </script>
+
+
+
+
+
+            <h3> <a href = "#" onclick = "toggleOutput()">Output Help</a> </h3>
+            <br></br>
+            <div id = "outputDiv" style="display:none; border:black solid">
+                 You can click on more info to go to the plan providers external website. 
+                <br></br>
+                 The plans are sorted in terms of cost, with the cheapest 'winning' gold. 
+                <br></br>
+                 You can easily click on the back button to return to the input page to enter in new information.
+                <br></br>
+                 Plans are chosen from almost 40 plans, from the main mobile carriers: AT+T, Boost Mobile, Sprint, T-Mobile and Verizon.
+                <br></br>
+            </div>
+
+            <script>
+                function toggleOutput() {
+                    var output = document.getElementById("outputDiv");
+                    if (output.style.display == "block") {
+                        output.style.display = "none";
+                    }
+                    else {
+                        output.style.display = "block";
+                    }
+                }
+            </script>
+
+
+            </div>
+        </b:container> 
+
+
+
+
     </h:body>
 </html>
