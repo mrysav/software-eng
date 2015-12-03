@@ -83,14 +83,14 @@ public class PlanBean implements Serializable {
           
             
             if (rs.getBoolean("unlimited_calls" )){
-                plan1Message[0] = "Unlimited calls";
+                plan1Message[0] = "Unlimited calls!";
             }
             else {
                 plan1Message[0] = rs.getInt("minutes_per_month") + " calls per month";
             }
             
             if (rs.getBoolean("unlimited_texts" )){
-                plan1Message[1] = "Unlimited texts";
+                plan1Message[1] = "Unlimited texts!";
             }
             
             else {
@@ -98,7 +98,7 @@ public class PlanBean implements Serializable {
             }
             
             if (rs.getBoolean("unlimited_data" )){
-                plan1Message[2] = "Unlimited data";
+                plan1Message[2] = "Unlimited data!";
             }
             else {
                 plan1Message[2] = rs.getFloat("data_gb_per_month") + " GB of data per month";
@@ -114,14 +114,14 @@ public class PlanBean implements Serializable {
             plan2URL = rs.getString("URL");
             
              if (rs.getBoolean("unlimited_calls" )){
-                plan2Message[0] = "Unlimited calls";
+                plan2Message[0] = "Unlimited calls!";
             }
             else {
                 plan2Message[0] = rs.getInt("minutes_per_month") + " calls per month";
             }
             
             if (rs.getBoolean("unlimited_texts" )){
-                plan2Message[1] = "Unlimited texts";
+                plan2Message[1] = "Unlimited texts!";
             }
             
             else {
@@ -129,7 +129,7 @@ public class PlanBean implements Serializable {
             }
             
             if (rs.getBoolean("unlimited_data" )){
-                plan2Message[2] = "Unlimited data";
+                plan2Message[2] = "Unlimited data!";
             }
             else {
                 plan2Message[2] = rs.getFloat("data_gb_per_month") + " GB of data per month";
@@ -145,14 +145,14 @@ public class PlanBean implements Serializable {
             plan3URL = rs.getString("URL");
             
              if (rs.getBoolean("unlimited_calls" )){
-                plan3Message[0] = "Unlimited calls";
+                plan3Message[0] = "Unlimited calls!";
             }
             else {
                 plan3Message[0] = rs.getInt("minutes_per_month") + " calls per month";
             }
             
             if (rs.getBoolean("unlimited_texts" )){
-                plan3Message[1] = "Unlimited texts";
+                plan3Message[1] = "Unlimited texts!";
             }
             
             else {
@@ -160,7 +160,7 @@ public class PlanBean implements Serializable {
             }
             
             if (rs.getBoolean("unlimited_data" )){
-                plan3Message[2] = "Unlimited data";
+                plan3Message[2] = "Unlimited data!";
             }
             else {
                 plan3Message[2] = rs.getFloat("data_gb_per_month") + " GB of data per month";
@@ -205,15 +205,15 @@ public class PlanBean implements Serializable {
     }
     
     public String getPlan2Message1(){
-        return plan1Message[0];
+        return plan2Message[0];
     }
     
     public String getPlan2Message2(){
-        return plan1Message[1];
+        return plan2Message[1];
     }
     
     public String getPlan2Message3(){
-        return plan1Message[2];
+        return plan2Message[2];
     }
     
      public String getPlan2Carrier(){
@@ -233,15 +233,15 @@ public class PlanBean implements Serializable {
     }
     
      public String getPlan3Message1(){
-        return plan1Message[0];
+        return plan3Message[0];
     }
     
     public String getPlan3Message2(){
-        return plan1Message[1];
+        return plan3Message[1];
     }
     
     public String getPlan3Message3(){
-        return plan1Message[2];
+        return plan3Message[2];
     }
      
      
