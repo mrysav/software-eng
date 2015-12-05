@@ -110,13 +110,15 @@ a{
     
    <h:body>
        <div id="top">
-          <b:navBar brand="PhoneDB">
+           <span>
+          <b:navBar brand="#{msgs.brand}">
         <b:navbarLinks>
             <b:navLink value="Input" outcome="input"></b:navLink>
             <b:navLink value="Help" outcome="help"></b:navLink>
             <b:navLink value="Logout" outcome="index"></b:navLink>
            </b:navbarLinks>
         </b:navBar>
+           </span>
        </div>
        
           <h1 style="color:#00cccc;text-align: center; text-shadow: 2px 2px black"> #{msgs.hello} #{loginBean.username} #{msgs.title}</h1>
@@ -188,38 +190,8 @@ a{
 </div>
              
 </div>
-              <h:form>
-                 
-                  <div>   
-              <div style="text-align: center" align="center">        
-                           
-              <h:outputText style="color: #64AAA4; font: bold; font-size: large" value="Need adjustment?"/>
-             
-                  <p> Minutes:  <h:inputText id="mins" value="#{planBean.mins}" required="true" requiredMessage="Required Field" 
-                   />  
-                 <h:message style="color:red" for="mins"/> 
-                  </p>
-                  
-              <p> &nbsp; Texts: &nbsp; <h:inputText id="texts" required="true" requiredMessage="Required Field" 
-                  value="#{planBean.texts}"  />  
-                 <h:message style="color:red" for="texts"/> 
-             </p>
-                  
-             <p> &nbsp;&nbsp; Data: &nbsp;<h:inputText id="gigs" required="true" requiredMessage="Required Field" 
-                  value="#{planBean.gigs}"  />  
-                 <h:message style="color:red" for="gigs"/> 
-             </p>
-             
-                  <p> <h:commandButton action="#{planBean.submit()}"  value="New result "/></p> 
-             <p>
-                     <p> <a href="help.xhtml" >#{msgs.help}</a></p>
-             </p>
-                  <p> <h:commandButton action="#{planBean.restart()}"  value="#{msgs.back}"/></p>
-             
-                </div>
-                  
-                  </div> 
-          </h:form>
-          
+            
+          <div class="text-center"><b:button outcome="input" value="Back" 
+               style=" color: white; font-size: 20px;background-color: #72d8fe; width: 80px; height: 40px"/></div>
    </h:body>
 </html>
