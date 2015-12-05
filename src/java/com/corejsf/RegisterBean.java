@@ -26,7 +26,8 @@ public class RegisterBean implements Serializable {
     private String password1;
     private String password2;
     private String username;
-    
+    @Inject
+    private LoginBean loginBean;
     @Inject
     private Database database;
 
@@ -72,6 +73,7 @@ public class RegisterBean implements Serializable {
         
         try {
             if (database.createUser(username, password1)) {
+                loginBean.setUsername(username);
                 username = "";
                 password1 = "";
                 password2 = "";
