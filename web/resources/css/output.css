@@ -54,7 +54,7 @@
     transform: scale(1.15);
 }
 
-.carrier-url {
+.carrier-url, .carrier-url:hover, .carrier-url:visited{
     border: none;
     border-radius: 40px;
     background: #292b2e;
@@ -63,7 +63,7 @@
     margin: 8px 0 0 0
 }
 
-.back-button {
+.back-button, .back-button:hover, .back-button:default{
      color: white; 
      font-size: 20px; 
      background-color: #72d8fe; 
