@@ -1,196 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:b="http://bootsfaces.net/ui">
-   <h:head>
-      <title>#{msgs.title}</title>
-      
-      <style>
-         
-html {
-  background: rgb(246, 248, 248);
-}
-body {
-  padding: 56px;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 20px;
-  font-weight: 560;  
-}
-.promos {
-  width: 1120px;
-  margin: 0 auto;
-  margin-top: 70px;
-}
-.promo {
-  width: 350px;
-  background: #0F1012; 
-  color: #f9f9f9;
-  float: left;
-}
-.deal {
-  padding: 14px 0 0 0;
-}
-.deal span {
-  display: block;
-  text-align: center;
-  font-size: 25px;
-}
-.deal span:first-of-type {
-  font-size: 32px;  
-}
-.deal span:last-of-type {
-  font-size: 18px;
-}
+    <h:head>
+        <title>#{msgs.title}</title>
+        <h:outputStylesheet library="css" name="output.css" />
+    </h:head>
 
-.promo .price {
-  display: block;
-  width: 350px;  
-  background: #292b2e;
-  margin: 21px -.5 14px 0;
-  text-align: center;
-  font-size: 32px;
-  padding: 21px .5 17px 0;
-}
-ul {
-  display: block;
-  margin: 28px 0 14px 0;
-  padding: 0;
-  list-style-type: none;
-  text-align: center;
-  color: #999999;
-}
-li {
-  display: block;
-  margin: 14px 0 0 0;
-  color:white;
-  font-size: 18px;
-}
-.scale {
-  transform: scale(1.3);
-  box-shadow: 0 0 5px 1px rgba(20, 20, 20, 0.8);
-}
+    <h:body>
+        <div id="top">
+            <span>
+                <b:navBar brand="#{msgs.brand}">
+                    <b:navbarLinks>
+                        <b:navLink value="Help" outcome="help"></b:navLink>
+                        <b:navLink value="Logout" outcome="index"></b:navLink>
+                    </b:navbarLinks>
+                </b:navBar>
+            </span>
+        </div>
 
-.scale2 {
-  transform: scale(1.15);
-  box-shadow: 0 0 5px 1px rgba(20, 20, 20, 0.8);
-}
-
-.scale button {
-  background: #64AAA4;
-}
-
-.scale .price {
-  color: #64AAA4;
-}
-
-.silver{
-    padding-right: 50px;
-}
-
-a{
-  border: none;
-  border-radius: 40px;
-  background: #292b2e;
-  color: #f9f9f9;
-  padding: 10px 37px;
-  margin: 8px 0 0 0
-}
-#top{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-      </style>
-          
-   </h:head>
-    
-   <h:body>
-       <div id="top">
-           <span>
-          <b:navBar brand="#{msgs.brand}">
-        <b:navbarLinks>
-            <b:navLink value="Help" outcome="help"></b:navLink>
-            <b:navLink value="Logout" outcome="index"></b:navLink>
-           </b:navbarLinks>
-        </b:navBar>
-           </span>
-       </div>
-       
-          <h1 style="color:#00cccc;text-align: center; text-shadow: 2px 2px black"> #{msgs.hello} #{loginBean.username} #{msgs.title}</h1>
-          <h3 style="text-align: center"> <u> #{msgs.results}</u> </h3>
-   
-         <div class="promos"> 
-             
-<div class="promo scale2 silver" style="background : silver">
-  <div class="deal">
-      <span style="text-shadow: 2px 2px black"> # 2 </span>
-      <span> <u>#{planBean.plan2Carrier} </u></span>
-    <span>#{planBean.plan2Name}</span>
-  </div>
-    <span class="price" style="color: silver; width: 290px;">$#{planBean.plan2Cost}</span>
-  <ul class="features">
-    <li>#{planBean.plan2Message1}</li>
-    <li>#{planBean.plan2Message2}</li>
-    <li>#{planBean.plan2Message3}</li>   
-    <li><a style="border: none;
-  border-radius: 40px;
-  background: #292b2e;
-  color: #f9f9f9;
-  padding: 10px 37px;
-  margin: 8px 0 0 0" href="#{planBean.plan2URL}">More Info</a></li>
-  </ul>
-  
-</div>
-             
-<div class="promo scale" style="background : gold">
-  <div class="deal">
-    <span style="text-shadow: 2px 2px black"> # 1 </span>
-    <span style="color:black"><u>#{planBean.plan1Carrier}</u></span>
-     <span style="color:black">#{planBean.plan1Name}</span>
-  </div>
-  <span class="price" style="color: gold">$#{planBean.plan1Cost}</span>
-  <ul class="features">
-      <li style="color:black">#{planBean.plan1Message1}</li>
-    <li style="color:black">#{planBean.plan1Message2}</li>
-    <li style="color:black">#{planBean.plan1Message3}</li>   
-    <li style="color:black"><a style="border: none;
-  border-radius: 40px;
-  background: #292b2e;
-  color: #f9f9f9;
-  padding: 10px 37px;
-  margin: 8px 0 0 0" href="#{planBean.plan1URL}">More Info</a></li>
-  </ul>
-  
-</div>
-             
-<div class="promo" style="background : #CD7F32;  box-shadow: 0 0 5px 1px rgba(20, 20, 20, 0.8)">
-  <div class="deal">
-      <span style="text-shadow: 2px 2px black"> # 3</span>
-      <span> <u>#{planBean.plan3Carrier} </u></span>
-     <span>#{planBean.plan3Name}</span>
-  </div>
-  <span class="price" style="color: #CD7F32">$#{planBean.plan3Cost}</span>
-  <ul class="features">
-    <li>#{planBean.plan3Message1}</li>
-    <li>#{planBean.plan3Message2}</li>
-    <li>#{planBean.plan3Message3}</li>   
-    <li><a style="border: none;
-  border-radius: 40px;
-  background: #292b2e;
-  color: #f9f9f9;
-  padding: 10px 37px;
-  margin: 8px 0 0 0" href="#{planBean.plan3URL}">More Info</a></li>
-  </ul>
-  
-</div>
-             
-</div>
-            
-          <div class="text-center"><b:button outcome="input" value="Back" 
-               style=" color: white; font-size: 20px;background-color: #72d8fe; width: 80px; height: 40px"/></div>
-   </h:body>
+        <b:container>
+            <b:row styleClass="text-center">
+                <h2>Hi #{loginBean.username}!</h2>
+                <h3 class="text-center">#{msgs.results}</h3>
+            </b:row>
+            <b:row styleClass="plan-container">
+                <div class="promo col-md-4 mid-scale" style="background: silver">
+                    <div class="header">
+                        <h2 style="text-shadow: 2px 2px black">#2</h2>
+                        <h3><u>#{planBean.plan2Carrier}</u></h3>
+                        <h3>#{planBean.plan2Name}</h3>
+                    </div>
+                    <h3 class="price" style="color: silver">$#{planBean.plan2Cost}</h3>
+                    <ul>
+                        <li>#{planBean.plan2Message1}</li>
+                        <li>#{planBean.plan2Message2}</li>
+                        <li>#{planBean.plan2Message3}</li>   
+                        <li><a class="carrier-url" href="#{planBean.plan2URL}">More Info</a></li>
+                    </ul>
+                </div>
+                <div class="promo col-md-4 lg-scale" style="background: gold">
+                    <div class="header">
+                        <h2 style="text-shadow: 2px 2px black">#1</h2>
+                        <h3><u>#{planBean.plan1Carrier}</u></h3>
+                        <h3>#{planBean.plan1Name}</h3>
+                    </div>
+                    <h3 class="price" style="color: gold">$#{planBean.plan1Cost}</h3>
+                    <ul>
+                        <li style="color:black">#{planBean.plan1Message1}</li>
+                        <li style="color:black">#{planBean.plan1Message2}</li>
+                        <li style="color:black">#{planBean.plan1Message3}</li>   
+                        <li style="color:black"><a class="carrier-url" href="#{planBean.plan1URL}">More Info</a></li>
+                    </ul>
+                </div>
+                <div class="promo col-md-4" style="background: #CD7F32">
+                    <div class="header">
+                        <h2 style="text-shadow: 2px 2px black">#3</h2>
+                        <h3><u>#{planBean.plan3Carrier}</u></h3>
+                        <h3>#{planBean.plan3Name}</h3>
+                    </div>
+                    <h3 class="price" style="color: #CD7F32">$#{planBean.plan3Cost}</h3>
+                    <ul>
+                        <li>#{planBean.plan3Message1}</li>
+                        <li>#{planBean.plan3Message2}</li>
+                        <li>#{planBean.plan3Message3}</li>   
+                        <li><a class="carrier-url" href="#{planBean.plan3URL}">More Info</a></li>
+                    </ul>
+                </div>
+            </b:row>
+            <b:row class="text-center" style="margin-top: 20px; margin-bottom: 20px;">
+                <b:button outcome="input" value="Back" class="back-button" />
+            </b:row>
+        </b:container>
+    </h:body>
 </html>
