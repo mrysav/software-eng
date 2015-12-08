@@ -34,7 +34,7 @@
                         <h:outputText value="#{msgs.mins}" class="col-sm-8 control-label" />  
                         <div class="col-sm-4">
                             <b:inputText id="mins" value="#{planBean.mins}" required="true" requiredMessage="Required field"
-                                         styleClass="form-control" p:placeholder="talk time"/>
+                                         styleClass="form-control" p:placeholder="talk time" converterMessage="Please enter digits only."/>
                         </div>
                     </div>
 
@@ -43,7 +43,7 @@
                         <h:outputText value="#{msgs.texts}" class="col-sm-8 control-label" />  
                         <div class="col-sm-4">
                             <b:inputText id="texts" required="true" requiredMessage="Required field"
-                                         value="#{planBean.texts}" styleClass="form-control" p:placeholder="sent+received"/>
+                                         value="#{planBean.texts}" styleClass="form-control" p:placeholder="sent+received" converterMessage="Please enter digits only."/>
                         </div>
                     </div>
 
@@ -52,7 +52,7 @@
                         <h:outputText value="#{msgs.gigs}" class="col-sm-8 control-label" />  
                         <div class="col-sm-4">
                             <b:inputText id="gigs" required="true" requiredMessage="Required Field"
-                                         value="#{planBean.gigs}" styleClass="form-control" p:placeholder="in gigabytes"/>
+                                         value="#{planBean.gigs}" styleClass="form-control" p:placeholder="in gigabytes"  converterMessage="Please enter digits only."/>
                         </div>
                     </div>
 
