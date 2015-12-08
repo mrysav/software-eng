@@ -18,6 +18,8 @@ import java.util.Base64;
 import java.sql.*;
 import java.util.Arrays;
 import java.security.SecureRandom;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Shamelessly borrowed and modified from
@@ -35,6 +37,42 @@ public class Database {
 
     public Database() {
     }
+    
+    public class Plan {
+        public String planName;
+        public String planCarrier;
+        public String planCost;
+        public String planURL;
+        
+        public Plan (String name, String carrier, String cost, String url) {
+            planName = name;
+            planCarrier = carrier;
+            planCost = cost;
+            planURL = url;
+        }
+    }
+    
+    private List<Plan> buildFavoritesList(ResultSet resultSet, String columnName)
+            throws SQLException {
+        List<Plan> list = new ArrayList<>();
+        while (resultSet.next()) {
+            
+        }
+        return list;
+    }
+    
+    public List<Plan> getFavoritesForUser(String username)
+            throws SQLException, IOException {
+        String query = "SELECT * FROM favorites WHERE name = ?)";
+        try (Connection triviaConnection = dataSource.getConnection()) {
+            PreparedStatement statement = triviaConnection.prepareStatement(query);
+            statement.setString(1, username);
+            ResultSet resultSet = statement.executeQuery();
+            // return buildList(resultSet, );
+            return null;
+        }
+    }
+    
 
     /**
      * Authenticates the user with a given login and password.
