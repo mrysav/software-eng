@@ -16,7 +16,12 @@
                 <b:navLink value="Logout" outcome="index"></b:navLink>
             </b:navbarLinks>
         </b:navBar>
-        <b:container>
+        
+         <b:container rendered="#{!loginBean.isLoggedIn}">
+            <h2 style="text-align: center"> Please login to see this info! </h2>
+        </b:container>
+        
+        <b:container rendered="#{loginBean.isLoggedIn}">
             <b:row>
                 <h2 class="text-center">#{msgs.hello}, #{loginBean.username}!</h2>
                 <h4 class="text-center">#{msgs.heading}</h4>
