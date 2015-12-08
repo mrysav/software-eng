@@ -12,7 +12,7 @@
     <h:body>
         <b:navBar brand="#{msgs.brand}">
             <b:navbarLinks>
-                <b:navLink value="Register" outcome="register" active="#{loginBean.setUsername('')}#{planBean.setGigs(0.0)}#{planBean.setMins(0)}#{planBean.setTexts(0)}"></b:navLink>
+                <b:navLink value="Register" outcome="register" active="#{loginBean.logout()}"></b:navLink>
                 <b:navLink value="Help" outcome="help"></b:navLink>
             </b:navbarLinks>
         </b:navBar>

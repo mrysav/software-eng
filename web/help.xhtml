@@ -13,9 +13,8 @@
     <h:body>
         <b:navBar brand="#{msgs.brand}">
             <b:navbarLinks>
-                <b:navLink value="Login" outcome="index"></b:navLink>
-                <b:navLink value="Register" outcome="register"></b:navLink>
-
+                <b:navLink value="Login" outcome="index" rendered="#{!loginBean.isLoggedIn}"></b:navLink>
+                <b:navLink value="Enter Data" outcome="input" rendered="#{loginBean.isLoggedIn}"></b:navLink>
             </b:navbarLinks>
         </b:navBar>
 
