@@ -128,7 +128,8 @@
             <h4> For additional help, please  <a href="mailto:FindAPlanHelp@Gmail.com?subject=FindAPlan Assistance">Contact</a> us. </h4>
 
             <h:form>
-            <b:commandButton value="Back" onclick="history.go(-1)"></b:commandButton>
+                <b:commandButton value="Back" action="index" rendered="#{!loginBean.isLoggedIn}"></b:commandButton>
+                <b:commandButton value="Back" action="input" rendered="#{loginBean.isLoggedIn}"></b:commandButton>
             </h:form>
             </div>
         </b:container> 
