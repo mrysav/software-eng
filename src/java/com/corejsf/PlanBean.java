@@ -209,7 +209,18 @@ public class PlanBean implements Serializable {
         return "output.xhtml";
     }
     
-  
+    public int getID1(){
+        return plan1ID;
+    }
+    
+    public int getID2(){
+        return plan2ID;
+    }
+    
+    public int getID3(){
+        return plan3ID;
+    }
+    
     public String getPlan1Carrier(){
         return plan1Carrier;
     }
@@ -325,23 +336,5 @@ public class PlanBean implements Serializable {
      return this.gigs; 
     }
 
-    public void addToFavorites(int ref){
-        
-        if (ref ==1){
-            
-        }
-        
-        else if (ref ==2){
-            
-            
-        }
-        
-        else {
-            
-            
-        }
-        
-    }
-    
-    
+
 }

@@ -45,7 +45,13 @@
                         <li>#{planBean.plan2Message3}</li>   
                         <li><a class="carrier-url" href="#{planBean.plan2URL}">More Info</a></li>
                         
-                        <li><h:form> <h:commandButton value="+" class="favorites" action="#{planBean.addToFavorites(2)}"></h:commandButton></h:form></li>
+                      <li>
+                            <h:form> 
+                                <h:commandButton title="Add to favorites" value="+" class="favorites" 
+                                                 action="#{database.addToFavorites(loginBean.username, planBean.ID2)}">
+                                </h:commandButton>
+                            </h:form>
+                        </li>
                     </ul>
                 </div>
                 <div class="promo col-md-4 lg-scale" style="background: gold">
@@ -60,7 +66,13 @@
                         <li style="color:black">#{planBean.plan1Message2}</li>
                         <li style="color:black">#{planBean.plan1Message3}</li>   
                         <li style="color:black"><a class="carrier-url" href="#{planBean.plan1URL}">More Info</a></li>
-                        <li><h:form> <h:commandButton value="+" class="favorites" action="#{planBean.addToFavorites(1)}"></h:commandButton></h:form></li>
+                        <li>
+                            <h:form> 
+                                <h:commandButton title="Add to favorites" value="+" class="favorites" 
+                                                 action="#{database.addToFavorites(loginBean.username, planBean.ID1)}">
+                                </h:commandButton>
+                            </h:form>
+                        </li>
                     </ul>
                 </div>
                 <div class="promo col-md-4" style="background: #CD7F32">
@@ -75,7 +87,13 @@
                         <li>#{planBean.plan3Message2}</li>
                         <li>#{planBean.plan3Message3}</li>   
                         <li><a class="carrier-url" href="#{planBean.plan3URL}">More Info</a></li>
-                        <li><h:form> <h:commandButton title="Add to favorites" value="+" class="favorites" action="#{planBean.addToFavorites(3)}"></h:commandButton></h:form></li>
+                        <li>
+                            <h:form> 
+                                <h:commandButton title="Add to favorites" value="+" class="favorites" 
+                                                 action="#{database.addToFavorites(loginBean.username, planBean.ID3)}">
+                                </h:commandButton>
+                            </h:form>
+                        </li>
                     </ul>
                 </div>
             </b:row>
