@@ -27,18 +27,21 @@ public class PlanBean implements Serializable {
     private String plan1Cost;
     private String plan1URL;
     private String[] plan1Message = new String[3];
+    private int plan1ID;
    
     private String plan2Carrier;
     private String plan2Name;
     private String plan2Cost;
     private String plan2URL;
     private String[] plan2Message = new String[3];
+    private int plan2ID;
     
      private String plan3Carrier;
     private String plan3Name;
     private String plan3Cost;
     private String plan3URL;
     private String[] plan3Message = new String[3];
+    private int plan3ID;
     
         private static final String databaseURL = "jdbc:derby://ukko.d.umn.edu:16020/databaseDB";
     
@@ -80,7 +83,7 @@ public class PlanBean implements Serializable {
             plan1Name =  rs.getString("plan_name");
             plan1Cost = "" + rs.getInt("monthy_price");
             plan1URL = rs.getString("URL");
-          
+            plan1ID = rs.getInt("id");
             
             if (rs.getBoolean("unlimited_calls" )){
                 plan1Message[0] = "Unlimited calls!";
@@ -125,6 +128,7 @@ public class PlanBean implements Serializable {
             plan2Name = rs.getString("plan_name");
             plan2Cost = "" +rs.getInt("monthy_price");
             plan2URL = rs.getString("URL");
+            plan2ID = rs.getInt("id");
             
              if (rs.getBoolean("unlimited_calls" )){
                 plan2Message[0] = "Unlimited calls!";
@@ -164,6 +168,7 @@ public class PlanBean implements Serializable {
             plan3Name =  rs.getString("plan_name");
             plan3Cost =  "" + rs.getInt("monthy_price");
             plan3URL = rs.getString("URL");
+            plan3ID = rs.getInt("id");
             
              if (rs.getBoolean("unlimited_calls" )){
                 plan3Message[0] = "Unlimited calls!";
@@ -320,7 +325,23 @@ public class PlanBean implements Serializable {
      return this.gigs; 
     }
 
-    
+    public void addToFavorites(int ref){
+        
+        if (ref ==1){
+            
+        }
+        
+        else if (ref ==2){
+            
+            
+        }
+        
+        else {
+            
+            
+        }
+        
+    }
     
     
 }
