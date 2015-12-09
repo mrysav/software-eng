@@ -3,7 +3,6 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
@@ -12,7 +11,7 @@
     <h:body>
         <b:navBar brand="#{msgs.brand}">
             <b:navbarLinks>
-                <b:navLink value="Input" outcome="input"></b:navLink>
+                <b:navLink value="Enter Data" outcome="input"></b:navLink>
                 <b:navLink value="Help" outcome="help"></b:navLink>
                 <b:navLink value="Logout" outcome="index"></b:navLink>
 
@@ -21,22 +20,24 @@
 
         <b:container rendered="#{loginBean.isLoggedIn}">
             <b:row styleClass="text-center">
-                <h2>Here are you favorite plans, #{loginBean.username}!</h2>
+                <h2>#{msgs.favorites} #{loginBean.username}!</h2>
             </b:row>
 
             <table class="order-table">
                 <tr>
                     <th class="order-table-header">Plan Carrier</th>
+                    <th class="order-table-header">Plan Name</th>
                     <th class="order-table-header">Plan Price</th>
                     <th class="order-table-header">Plan URL</th>
                 </tr>
 
                 <tbody>
-                    <ui:repeat var="o" value="#{database.favorites}">
+                    <ui:repeat var="o" value="#{database.getFavoritesForUser(loginBean.username)}">
                         <tr>
                             <td>#{o.planCarrier}</td>
+                            <td>#{o.planName}</td>
                             <td>#{o.planCost}</td>
-                            <td>#{o.planURL}</td>
+                            <td><a href="#{o.planURL}">More Info</a></td>
                         </tr>
                     </ui:repeat>
                 </tbody>

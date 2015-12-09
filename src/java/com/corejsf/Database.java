@@ -24,6 +24,7 @@ import java.util.List;
 /**
  * Shamelessly borrowed and modified from
  * https://www.owasp.org/index.php/Hashing_Java#Complete_Java_Sample
+ *
  * @author mitchell
  */
 @Named(value = "database")
@@ -37,62 +38,39 @@ public class Database {
 
     public Database() {
     }
-    
-    public class Plan {
-        public String planName;
-        public String planCarrier;
-        public String planCost;
-        public String planURL;
-        
-        public Plan (String name, String carrier, String cost, String url) {
-            planName = name;
-            planCarrier = carrier;
-            planCost = cost;
-            planURL = url;
-        }
-    }
-    
-    public void addToFavorites(String name, int id) throws SQLException{
-        
-        String query = "INSERT INTO favorites VALUES('" + name + "'," + id + ")";
-        try (Connection con = dataSource.getConnection()) {
-           PreparedStatement ps = con.prepareStatement("INSERT INTO favorites (name, plan_id) VALUES (?,?)");
-                ps.setString(1, name);
-                ps.setInt(2, id);
-               
-                ps.executeUpdate();
-        
-        }
-        
-    }
-    
-    
-    private List<Plan> buildFavoritesList(ResultSet resultSet, String columnName)
+
+    public void addToFavorites(String name, int id) 
             throws SQLException {
-        List<Plan> list = new ArrayList<>();
-        while (resultSet.next()) {
-            
+        try (Connection con = dataSource.getConnection()) {
+            PreparedStatement ps = con.prepareStatement("INSERT INTO favorites (name, plan_id) VALUES (?,?)");
+            ps.setString(1, name);
+            ps.setInt(2, id);
+            ps.executeUpdate();
         }
-        return list;
     }
-    
+
     public List<Plan> getFavoritesForUser(String username)
             throws SQLException, IOException {
-        String query = "SELECT * FROM favorites WHERE name = ?)";
-        try (Connection triviaConnection = dataSource.getConnection()) {
-            PreparedStatement statement = triviaConnection.prepareStatement(query);
+        String query = "select * from plans where \"id\" in (select plan_id from favorites where name = ?)";
+        try (Connection conn = dataSource.getConnection()) {
+            PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, username);
             ResultSet resultSet = statement.executeQuery();
-            // return buildList(resultSet, );
-            return null;
+            List<Plan> list = new ArrayList<>();
+            while (resultSet.next()) {
+                list.add(new Plan(resultSet.getString("plan_name"),
+                        resultSet.getString("carrier_name"),
+                        resultSet.getString("monthy_price"),
+                        resultSet.getString("URL")));
+            }
+            return list;
         }
     }
-    
 
     /**
-     * Authenticates the user with a given login and password.
-     * If password and/or login is null then always returns false. 
-     * If the user does not exist in the database returns false.
+     * Authenticates the user with a given login and password. If password
+     * and/or login is null then always returns false. If the user does not
+     * exist in the database returns false.
      *
      * @param login String The login of the user
      * @param password String The password of the user
@@ -166,7 +144,7 @@ public class Database {
     public boolean createUser(String login, String password)
             throws SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {
         PreparedStatement ps = null;
-        try(Connection con = dataSource.getConnection()) {
+        try (Connection con = dataSource.getConnection()) {
             if (login != null && password != null && login.length() <= 100) {
                 // Uses a secure Random not a simple Random
                 SecureRandom random = SecureRandom.getInstance("SHA1PRNG");

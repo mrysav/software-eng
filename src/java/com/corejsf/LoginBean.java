@@ -61,12 +61,12 @@ public class LoginBean implements Serializable {
                 loggedIn = false;
                 username = "";
                 password = "";
-                getContext().addMessage(null, new FacesMessage("Login failed."));
+                getContext().addMessage(null, new FacesMessage("Login failed:", "Wrong username or password."));
             }
         } catch (SQLException ex) {
-            getContext().addMessage(null, new FacesMessage("Login failed - database exception occured."));
+            getContext().addMessage(null, new FacesMessage("Login failed:", "Database exception occured."));
         } catch (NoSuchAlgorithmException ex) {
-            getContext().addMessage(null, new FacesMessage("Login failed - decryption exception occured."));
+            getContext().addMessage(null, new FacesMessage("Login failed:", "Decryption exception occured."));
         }
         
         return "index";

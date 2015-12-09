@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.corejsf;
 
 import java.io.Serializable;
@@ -69,27 +64,34 @@ public class RegisterBean implements Serializable {
         
         // Password does not meet requirements.
         if(!checkPassword())
-            return null;
+            return "register";
         
         try {
             if (database.createUser(username, password1)) {
                 loginBean.setUsername(username);
+                loginBean.setPassword(password1);
                 username = "";
                 password1 = "";
                 password2 = "";
-                return "input";
+                // make sure we can log in right away, but don't go setting any flags here;
+                // that would just be confusing.
+                return loginBean.authenticate();
             } else {
                 username = "";
                 password1 = "";
                 password2 = "";
-                getContext().addMessage(null, new FacesMessage("Registration failed - username already taken."));
+                getContext().addMessage(null, new FacesMessage("Registration failed:", "An error occurred."));
             }
         } catch (SQLException ex) {
-            getContext().addMessage(null, new FacesMessage("Login failed - database exception occured." + ex.getMessage()));
+            if(ex.getErrorCode() == 30000)
+                getContext().addMessage(null, new FacesMessage("Registration failed:","Username already taken."));
+            else
+                getContext().addMessage(null, new FacesMessage("Registration failed:","Database exception occurred."));
+
         } catch (NoSuchAlgorithmException ex) {
-            getContext().addMessage(null, new FacesMessage("Login failed - decryption exception occured."));
+            getContext().addMessage(null, new FacesMessage("Registration failed:", "Decryption exception occured."));
         } catch (UnsupportedEncodingException ex) {
-            getContext().addMessage(null, new FacesMessage("Login failed - encoding exception occured."));
+            getContext().addMessage(null, new FacesMessage("Registration failed:", "Encoding exception occured."));
         }
         
         return "register";
@@ -101,15 +103,15 @@ public class RegisterBean implements Serializable {
 
         //check if username and passwords are valid
         if (!password1.equals(password2)) {
-            getContext().addMessage(null, new FacesMessage("Passwords must match!"));
+            getContext().addMessage(null, new FacesMessage("Error:", "Passwords must match!"));
             return false;
         } // check if password is long enough
         else if (password1.length() < 8) {
-            getContext().addMessage(null, new FacesMessage("Passwords must be at least 8 characters long!"));
+            getContext().addMessage(null, new FacesMessage("Error:", "Passwords must be at least 8 characters long!"));
             return false;
         } // check password length
         else if (password1.length() > 32) {
-            getContext().addMessage(null, new FacesMessage("Passwords must be less than 32 characters long!"));
+            getContext().addMessage(null, new FacesMessage("Error:", "Passwords must be less than 32 characters long!"));
             return false;
         }
 
@@ -123,12 +125,12 @@ public class RegisterBean implements Serializable {
         }
 
         if (!hasLetters) {
-            getContext().addMessage(null, new FacesMessage("Passwords must contain at least one letter!"));
+            getContext().addMessage(null, new FacesMessage("Error:", "Passwords must contain at least one letter!"));
             return false;
         }
 
         if (!hasNums) {
-            getContext().addMessage(null, new FacesMessage("Passwords must contain at least one number!"));
+            getContext().addMessage(null, new FacesMessage("Error:", "Passwords must contain at least one number!"));
             return false;
         }
         
