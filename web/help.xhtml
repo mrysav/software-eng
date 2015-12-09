@@ -21,9 +21,9 @@
         
         <b:container>
             <div id='mainDiv' style="text-align: center">
-            <h3><a href = "#" onclick = "toggleReg()">Registration Help</a></h3>
+            <h3><a href = "#" onclick = "toggleHelpText('regDiv')">Registration Help</a></h3>
             <br></br>
-            <div id = "registerDiv" style="display:none; border:black solid" >
+            <div id = "regDiv" style="display:none; border:black solid" >
                      Make sure you do not already have an account. If you do you won't be able to register.
                     <br></br>
                      Make sure your passwords match identical.
@@ -34,20 +34,10 @@
                     <br></br>
             </div>
 
-            <script>
-                function toggleReg() {
-                    var reg = document.getElementById("registerDiv");
-                    if (reg.style.display == "block") {
-                        reg.style.display = "none";
-                    }
-                    else {
-                        reg.style.display = "block";
-                    }
-                }
-            </script>
+            
 
 
-            <h3> <a href = "#" onclick = "toggleLogin()">Login Help</a> </h3>
+            <h3> <a href = "#" onclick = "toggleHelpText('loginDiv')">Login Help</a> </h3>
             <br></br>
             <div id = "loginDiv" style="display:none; border:black solid">
                 You must have already registered with FindAPlan. If you have not done so, please do so prior to logging in!
@@ -60,19 +50,9 @@
                 <br></br>
             </div>
 
-            <script>
-                function toggleLogin() {
-                    var login = document.getElementById("loginDiv");
-                    if (login.style.display == "block") {
-                        login.style.display = "none";
-                    }
-                    else {
-                        login.style.display = "block";
-                    }
-                }
-            </script>
+           
 
-            <h3><a href = "#" onclick = "toggleInput()">Input Help</a></h3>
+            <h3><a href = "#" onclick = "toggleHelpText('inputDiv')">Input Help</a></h3>
             <br></br>
             <div id = "inputDiv" style="display:none; border:black solid">
                  You should only enter whole numbers for minutes and texts! 
@@ -84,24 +64,7 @@
                  Remember that all data input should be on a monthly basis.
                 <br></br>
             </div>
-
-            <script>
-                function toggleInput() {
-                    var input = document.getElementById("inputDiv");
-                    if (input.style.display == "block") {
-                        input.style.display = "none";
-                    }
-                    else {
-                        input.style.display = "block";
-                    }
-                }
-            </script>
-
-
-
-
-
-            <h3> <a href = "#" onclick = "toggleOutput()">Output Help</a> </h3>
+          <h3> <a href = "#" onclick = "toggleHelpText('outputDiv')">Output Help</a> </h3>
             <br></br>
             <div id = "outputDiv" style="display:none; border:black solid">
                  You can click on more info to go to the plan providers external website. 
@@ -114,17 +77,30 @@
                 <br></br>
             </div>
 
+                  <h3> <a href = "#" onclick = "toggleHelpText('favDiv')">Favorites Help</a> </h3>
+            <br></br>
+            <div id = "favDiv" style="display:none; border:black solid">
+                Favorites can be added on the output page.
+                <br></br>
+                 You can add as many plans to your favorites as you want. 
+                <br></br>
+                 All favorites contain an external link so you can add multiple plans and look at them later.
+                <br></br>
+                
+            </div>
+
             <script>
-                function toggleOutput() {
-                    var output = document.getElementById("outputDiv");
-                    if (output.style.display == "block") {
-                        output.style.display = "none";
+                function toggleHelpText(divName) {
+                    var usedDiv = document.getElementById(divName);
+                    if (usedDiv.style.display === "block") {
+                        usedDiv.style.display = "none";
                     }
                     else {
-                        output.style.display = "block";
+                        usedDiv.style.display = "block";
                     }
                 }
             </script>
+         
 
             <h:form>
                 <b:commandButton value="Back" action="index" rendered="#{!loginBean.isLoggedIn}"></b:commandButton>
@@ -132,6 +108,9 @@
             </h:form>
             </div>
         </b:container> 
+        
+        
+        
 
 
 

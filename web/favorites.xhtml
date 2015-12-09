@@ -21,11 +21,11 @@
         <b:container rendered="#{loginBean.isLoggedIn}">
             <b:row styleClass="text-center">
                 <h2>#{msgs.favorites} #{loginBean.username}!</h2>
-            </b:row>
-
-            <table class="order-table">
+             </b:row>
+            <b:row>
+            <table class="table table-striped" align="center">
                 <tr>
-                    <th class="order-table-header">Plan Carrier</th>
+                    <th class="order-table-header">Plan Provider</th>
                     <th class="order-table-header">Plan Name</th>
                     <th class="order-table-header">Plan Price</th>
                     <th class="order-table-header">Plan URL</th>
@@ -42,7 +42,8 @@
                     </ui:repeat>
                 </tbody>
             </table>
-
+            </b:row>
+            
 
 
         </b:container>
