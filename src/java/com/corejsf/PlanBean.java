@@ -61,120 +61,120 @@ public class PlanBean implements Serializable {
         plan3Cost = null;
         plan3URL = null;
 
-        Connection conn = dataSource.getConnection();
-        final String queryCheck = "SELECT * FROM plans WHERE "
-                + " (\"unlimited_data\" OR \"data_gb_per_month\" >=" + gigs + ")"
-                + "AND (\"unlimited_calls\" OR \"minutes_per_month\" >= " + mins + ")"
-                + "AND (\"unlimited_texts\" OR \"texts_per_month\" >= " + texts + ") ORDER BY \"monthy_price\" ASC";
+        try (Connection conn = dataSource.getConnection()) {
+            final String queryCheck = "SELECT * FROM plans WHERE "
+                    + " (\"unlimited_data\" OR \"data_gb_per_month\" >=" + gigs + ")"
+                    + "AND (\"unlimited_calls\" OR \"minutes_per_month\" >= " + mins + ")"
+                    + "AND (\"unlimited_texts\" OR \"texts_per_month\" >= " + texts + ") ORDER BY \"monthy_price\" ASC";
 
-        final Statement ps = conn.createStatement();
-        ResultSet rs = ps.executeQuery(queryCheck);
-        int i = 0;
+            final Statement ps = conn.createStatement();
+            ResultSet rs = ps.executeQuery(queryCheck);
+            int i = 0;
 
-        while (i < 3 && rs.next()) {
+            while (i < 3 && rs.next()) {
 
-            if (i == 0) {
-                plan1Carrier = rs.getString("carrier_name");
-                plan1Name = rs.getString("plan_name");
-                plan1Cost = "" + rs.getInt("monthy_price");
-                plan1URL = rs.getString("URL");
-                plan1ID = rs.getInt("id");
+                if (i == 0) {
+                    plan1Carrier = rs.getString("carrier_name");
+                    plan1Name = rs.getString("plan_name");
+                    plan1Cost = "" + rs.getInt("monthy_price");
+                    plan1URL = rs.getString("URL");
+                    plan1ID = rs.getInt("id");
 
-                if (rs.getBoolean("unlimited_calls")) {
-                    plan1Message[0] = "Unlimited calls!";
-                } else if (rs.getInt("minutes_per_month") == 0) {
-                    plan1Message[0] = "No calls allowed";
+                    if (rs.getBoolean("unlimited_calls")) {
+                        plan1Message[0] = "Unlimited calls!";
+                    } else if (rs.getInt("minutes_per_month") == 0) {
+                        plan1Message[0] = "No calls allowed";
+                    } else {
+
+                        plan1Message[0] = rs.getInt("minutes_per_month") + " calls per month";
+                    }
+
+                    if (rs.getBoolean("unlimited_texts")) {
+                        plan1Message[1] = "Unlimited texts!";
+                    } else if (rs.getInt("texts_per_month") == 0) {
+                        plan1Message[1] = "No texts allowed";
+                    } else {
+                        plan1Message[1] = rs.getInt("texts_per_month") + " texts per month";
+                    }
+
+                    if (rs.getBoolean("unlimited_data")) {
+                        plan1Message[2] = "Unlimited data!";
+                    } else if (rs.getFloat("data_gb_per_month") == 0) {
+                        plan1Message[2] = "Wifi data only";
+                    } else {
+                        plan1Message[2] = rs.getFloat("data_gb_per_month") + " GB of data per month";
+                    }
+
+                } else if (i == 1) {
+
+                    plan2Carrier = rs.getString("carrier_name");
+                    plan2Name = rs.getString("plan_name");
+                    plan2Cost = "" + rs.getInt("monthy_price");
+                    plan2URL = rs.getString("URL");
+                    plan2ID = rs.getInt("id");
+
+                    if (rs.getBoolean("unlimited_calls")) {
+                        plan2Message[0] = "Unlimited calls!";
+                    } else if (rs.getInt("minutes_per_month") == 0) {
+                        plan2Message[0] = "No calls allowed";
+                    } else {
+                        plan2Message[0] = rs.getInt("minutes_per_month") + " calls per month";
+                    }
+
+                    if (rs.getBoolean("unlimited_texts")) {
+                        plan2Message[1] = "Unlimited texts!";
+                    } else if (rs.getInt("texts_per_month") == 0) {
+                        plan2Message[1] = "No texts allowed";
+                    } else {
+                        plan2Message[1] = rs.getInt("texts_per_month") + " texts per month";
+                    }
+
+                    if (rs.getBoolean("unlimited_data")) {
+                        plan2Message[2] = "Unlimited data!";
+                    } else if (rs.getFloat("data_gb_per_month") == 0) {
+                        plan2Message[2] = "Wifi data only";
+                    } else {
+                        plan2Message[2] = rs.getFloat("data_gb_per_month") + " GB of data per month";
+                    }
+
                 } else {
 
-                    plan1Message[0] = rs.getInt("minutes_per_month") + " calls per month";
+                    plan3Carrier = rs.getString("carrier_name");
+                    plan3Name = rs.getString("plan_name");
+                    plan3Cost = "" + rs.getInt("monthy_price");
+                    plan3URL = rs.getString("URL");
+                    plan3ID = rs.getInt("id");
+
+                    if (rs.getBoolean("unlimited_calls")) {
+                        plan3Message[0] = "Unlimited calls!";
+                    } else if (rs.getInt("minutes_per_month") == 0) {
+                        plan3Message[0] = "No calls allowed";
+                    } else {
+                        plan3Message[0] = rs.getInt("minutes_per_month") + " calls per month";
+                    }
+
+                    if (rs.getBoolean("unlimited_texts")) {
+                        plan3Message[1] = "Unlimited texts!";
+                    } else if (rs.getInt("texts_per_month") == 0) {
+                        plan3Message[1] = "No texts allowed";
+                    } else {
+                        plan3Message[1] = rs.getInt("texts_per_month") + " texts per month";
+                    }
+
+                    if (rs.getBoolean("unlimited_data")) {
+                        plan3Message[2] = "Unlimited data!";
+                    } else if (rs.getFloat("data_gb_per_month") == 0) {
+                        plan3Message[2] = "Wifi data only";
+                    } else {
+                        plan3Message[2] = rs.getFloat("data_gb_per_month") + " GB of data per month";
+                    }
                 }
+                rs = ps.getResultSet();
+                i++;
 
-                if (rs.getBoolean("unlimited_texts")) {
-                    plan1Message[1] = "Unlimited texts!";
-                } else if (rs.getInt("texts_per_month") == 0) {
-                    plan1Message[1] = "No texts allowed";
-                } else {
-                    plan1Message[1] = rs.getInt("texts_per_month") + " texts per month";
-                }
-
-                if (rs.getBoolean("unlimited_data")) {
-                    plan1Message[2] = "Unlimited data!";
-                } else if (rs.getFloat("data_gb_per_month") == 0) {
-                    plan1Message[2] = "Wifi data only";
-                } else {
-                    plan1Message[2] = rs.getFloat("data_gb_per_month") + " GB of data per month";
-                }
-
-            } else if (i == 1) {
-
-                plan2Carrier = rs.getString("carrier_name");
-                plan2Name = rs.getString("plan_name");
-                plan2Cost = "" + rs.getInt("monthy_price");
-                plan2URL = rs.getString("URL");
-                plan2ID = rs.getInt("id");
-
-                if (rs.getBoolean("unlimited_calls")) {
-                    plan2Message[0] = "Unlimited calls!";
-                } else if (rs.getInt("minutes_per_month") == 0) {
-                    plan2Message[0] = "No calls allowed";
-                } else {
-                    plan2Message[0] = rs.getInt("minutes_per_month") + " calls per month";
-                }
-
-                if (rs.getBoolean("unlimited_texts")) {
-                    plan2Message[1] = "Unlimited texts!";
-                } else if (rs.getInt("texts_per_month") == 0) {
-                    plan2Message[1] = "No texts allowed";
-                } else {
-                    plan2Message[1] = rs.getInt("texts_per_month") + " texts per month";
-                }
-
-                if (rs.getBoolean("unlimited_data")) {
-                    plan2Message[2] = "Unlimited data!";
-                } else if (rs.getFloat("data_gb_per_month") == 0) {
-                    plan2Message[2] = "Wifi data only";
-                } else {
-                    plan2Message[2] = rs.getFloat("data_gb_per_month") + " GB of data per month";
-                }
-
-            } else {
-
-                plan3Carrier = rs.getString("carrier_name");
-                plan3Name = rs.getString("plan_name");
-                plan3Cost = "" + rs.getInt("monthy_price");
-                plan3URL = rs.getString("URL");
-                plan3ID = rs.getInt("id");
-
-                if (rs.getBoolean("unlimited_calls")) {
-                    plan3Message[0] = "Unlimited calls!";
-                } else if (rs.getInt("minutes_per_month") == 0) {
-                    plan3Message[0] = "No calls allowed";
-                } else {
-                    plan3Message[0] = rs.getInt("minutes_per_month") + " calls per month";
-                }
-
-                if (rs.getBoolean("unlimited_texts")) {
-                    plan3Message[1] = "Unlimited texts!";
-                } else if (rs.getInt("texts_per_month") == 0) {
-                    plan3Message[1] = "No texts allowed";
-                } else {
-                    plan3Message[1] = rs.getInt("texts_per_month") + " texts per month";
-                }
-
-                if (rs.getBoolean("unlimited_data")) {
-                    plan3Message[2] = "Unlimited data!";
-                } else if (rs.getFloat("data_gb_per_month") == 0) {
-                    plan3Message[2] = "Wifi data only";
-                } else {
-                    plan3Message[2] = rs.getFloat("data_gb_per_month") + " GB of data per month";
-                }
             }
-            rs = ps.getResultSet();
-            i++;
-
+            return "output.xhtml";
         }
-
-        return "output.xhtml";
     }
 
     public int getID1() {
