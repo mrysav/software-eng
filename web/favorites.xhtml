@@ -18,6 +18,10 @@
             </b:navbarLinks>
         </b:navBar>
 
+         <b:container rendered="#{!loginBean.isLoggedIn}">
+            <h2 style="text-align: center"> Please login to see this info! </h2>
+        </b:container>
+        
         <b:container rendered="#{loginBean.isLoggedIn}">
             <b:row styleClass="text-center">
                 <h2>#{msgs.favorites} #{loginBean.username}!</h2>
