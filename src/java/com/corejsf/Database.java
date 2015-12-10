@@ -56,7 +56,7 @@ public class Database {
 
     public List<Plan> getFavoritesForUser(String username)
             throws SQLException, IOException {
-        String query = "select * from plans where \"id\" in (select plan_id from favorites where name = ?)";
+        String query = "select * from plans where \"id\" in (select plan_id from favorites where name = ?)ORDER BY \"monthy_price\" ASC";
         try (Connection conn = dataSource.getConnection()) {
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, username);
